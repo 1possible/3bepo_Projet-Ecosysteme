@@ -1,6 +1,17 @@
 
 .vs/
 .git/
+./bin/
 *.cache
 *.user
 *.editorconfig
+*.dll
+.bin/
+*.exe
+ecosysteme/ecosysteme/bin/
+ecosysteme/ecosysteme/obj/
+ecosysteme/ecosysteme/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/XamlTypeInfo.g.cs
+ecosysteme/ecosysteme/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/XamlSaveStateFile.xml
+ecosysteme/ecosysteme/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/XamlSaveStateFile.xml
+ecosysteme/ecosysteme/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/XamlTypeInfo.g.cs
+ecosysteme/ecosysteme/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/Platforms/Windows/App.g.cs
