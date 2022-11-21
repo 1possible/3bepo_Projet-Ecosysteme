@@ -1,3 +1,6 @@
 
 .vs/
 .git/
+*.cache
+*.user
+*.editorconfig
