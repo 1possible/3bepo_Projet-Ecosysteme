@@ -3,12 +3,24 @@
     x:Class="ecosysteme.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ecosysteme"
+    xmlns:views="clr-namespace:ecosysteme.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
+    <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" />-->
+    <TabBar>
+        <!--<ShellContent
+            Title="MAIN"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Icon="icon_notes" />-->
+
+        <ShellContent
+            Title="GlobalEco"
+            ContentTemplate="{DataTemplate views:GlobalEcoSystemView}"
+            Icon="icon_about" />
+    </TabBar>
+    
 
 </Shell>
