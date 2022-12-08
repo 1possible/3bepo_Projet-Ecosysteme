@@ -9,10 +9,17 @@ namespace ecosysteme.Models
 {
     internal class AllAnimal
     {
+        GameManager manager;
+
+        public AllAnimal()
+        {
+            manager = new GameManager();
+            LoadAnimals();
+        }
         public ObservableCollection<Animal> Animals { get; set; } = new ObservableCollection<Animal>();
 
-        public AllAnimal() =>
-            LoadAnimals();
+        //public AllAnimal() =>
+        //    LoadAnimals();
 
         public void LoadAnimals()
         {
@@ -22,17 +29,17 @@ namespace ecosysteme.Models
             //string appDataPath = FileSystem.AppDataDirectory;
 
             // Use Linq extensions to load the *.notes.txt files.
-            Animal chat = new Animal();
-            chat.Text = "c'est un chat.";
-            Animal chien = new Animal();
-            chien.Text = "c'est un chien";
-            List<Animal> animals = new List<Animal>();
-            animals.Add(chat);
-            animals.Add(chien);
+            //manager.Update();
+            List<Animal> animals =manager.Animals();
 
             // Add each note into the ObservableCollection
             foreach (Animal animal in animals)
                 Animals.Add(animal);
+        }
+
+        public void update()
+        {
+            manager.update();
         }
     }
 }

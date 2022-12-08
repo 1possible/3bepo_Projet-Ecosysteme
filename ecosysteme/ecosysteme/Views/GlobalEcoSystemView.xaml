@@ -9,26 +9,30 @@
     </ContentPage.ToolbarItems>-->
 
     <!-- Display notes in a list -->
-    <CollectionView x:Name="animalsCollection"
+    <RefreshView
+        Command="{Binding OnTimeEvent}"
+        IsRefreshing="True">
+        <CollectionView x:Name="animalsCollection"
                         ItemsSource="{Binding Animals}"
                         Margin="20"
                         SelectionMode="Single"
                         SelectionChanged="animalsCollection_SelectionChanged">
 
-        <!-- Designate how the collection of items are laid out -->
-        <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
-        </CollectionView.ItemsLayout>
+            <!-- Designate how the collection of items are laid out -->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
 
-        <!-- Define the appearance of each item in the list -->
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <StackLayout>
-                    <Label Text="{Binding Text}" FontSize="22"/>
-                    <!--<Label Text="{Binding Date}" FontSize="14" TextColor="Silver"/>-->
-                </StackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Text}" FontSize="22"/>
+                        <!--<Label Text="{Binding Date}" FontSize="14" TextColor="Silver"/>-->
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>
 
