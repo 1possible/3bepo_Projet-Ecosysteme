@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public abstract class lifeForm : SimulationObject
+    public abstract class LifeForm : SimulationObject
     {
         int pv;
         int pvMax;
@@ -14,7 +14,7 @@ namespace ecosysteme.Models
         int energieMax;
         int consomationEnergie;
 
-        public lifeForm(Color color, double x, double y,int pv, int energie,int consEne) : base(color, x, y) {
+        public LifeForm(Color color, double x, double y,int pv, int energie,int consEne) : base(color, x, y) {
        
             this.pv = pv;
             this.pvMax = pv;
