@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public class Animal : SimulationObject
+    public class Animal : LifeForm
     {
-        public Animal(double x, double y) : base(Colors.Red, x, y) { }
+        public Animal(double x, double y) : base(Colors.Red, x, y,20,20,1) { }
         public override void Update()
         {
-            X = X + 5;
+            base.Update();
+            //X = X + 5;
         }
     }
 }

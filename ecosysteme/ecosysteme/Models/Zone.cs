@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public class Plant : LifeForm
+    public class Zone
     {
-        public Plant(double x, double y) : base(Colors.Green, x, y,20,20,1) { }
-
-        public override void Update()
+        double rayon;
+        public Zone(double rayon)
         {
-            base.Update();
+            this.rayon = rayon;
         }
+        public double getRayon() { return this.rayon;}
     }
 }

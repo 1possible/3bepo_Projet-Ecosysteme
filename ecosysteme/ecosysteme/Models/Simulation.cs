@@ -19,9 +19,9 @@ namespace ecosysteme.Models
 
         public void Update()
         {
-            foreach (SimulationObject drawable in objects)
+            foreach (SimulationObject simObj in objects)
             {
-                drawable.Update();
+                simObj.Update();
             }
         }
 
