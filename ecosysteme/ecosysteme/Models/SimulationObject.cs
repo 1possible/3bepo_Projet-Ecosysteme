@@ -11,5 +11,8 @@ namespace ecosysteme.Models
         public SimulationObject(Color color, double x, double y) : base(color, x, y) { }
 
         abstract public void Update();
+        abstract public void Disappear();
+
+
     }
 }

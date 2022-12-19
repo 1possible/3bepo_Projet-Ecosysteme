@@ -13,8 +13,15 @@ namespace ecosysteme.Models
         {
             objects = new List<SimulationObject>();
 
-            objects.Add(new Animal(100, 100));
+            objects.Add(new Carnivore(100, 150));
+            objects.Add(new Herbivore(100, 100));
+            objects.Add(new Carnivore(100, 150));
+            objects.Add(new Herbivore(100, 100));
+            objects.Add(new Carnivore(100, 150));
+            objects.Add(new Herbivore(100, 100));
             objects.Add(new Plant(50, 100));
+            objects.Add(new OrganicWaste(20,20,100,5));
+            objects.Add(new Meat(40, 40, 100, 5,100));
         }
 
         public void Update()

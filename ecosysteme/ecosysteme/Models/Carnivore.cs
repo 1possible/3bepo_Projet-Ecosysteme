@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public class Plant : LifeForm
+    internal class Carnivore : Animal
     {
-        public Plant(double x, double y) : base(Colors.Green, x, y,20,20,1) { }
+        public Carnivore(double x, double y) : base(Colors.Red, x, y, 20, 20, 1, 5)
+        {
+
+        }
 
         public override void Update()
         {
             base.Update();
+            base.Move(5);
         }
 
-        public override void Disappear()
-        {
-        }
     }
 }
