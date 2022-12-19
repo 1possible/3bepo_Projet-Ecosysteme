@@ -23,5 +23,12 @@ namespace ecosysteme.Models
         {
 
         }
+
+        protected override void Eat(IFood consomable)
+        {
+
+        }
+
+        protected override void Reproduce() { }
     }
 }

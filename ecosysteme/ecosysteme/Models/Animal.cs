@@ -20,7 +20,6 @@ namespace ecosysteme.Models
         }
 
 
-
         public void Move(int speed)
         {
             Random rnd = new Random();
