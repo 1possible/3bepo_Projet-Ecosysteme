@@ -19,10 +19,7 @@ namespace ecosysteme.Models
             base.Update();  
         }
 
-        public override void Disappear()
-        {
 
-        }
 
         public void Move(int speed)
         {

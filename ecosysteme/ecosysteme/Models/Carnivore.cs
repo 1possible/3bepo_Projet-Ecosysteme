@@ -19,5 +19,10 @@ namespace ecosysteme.Models
             base.Move(5);
         }
 
+        public override void Disappear()
+        {
+            
+        }
+
     }
 }
