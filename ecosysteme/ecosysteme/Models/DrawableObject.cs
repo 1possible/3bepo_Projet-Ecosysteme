@@ -10,6 +10,14 @@ namespace ecosysteme.Models
     {
         Color color;
         double x, y;
+
+        //Carnivore: rouge
+        //herbivore: Noir
+        //plante: vert
+        //viande: rose
+        //déchet organique: brun
+
+
         public DrawableObject(Color color, double x, double y)
         {
             this.color = color;

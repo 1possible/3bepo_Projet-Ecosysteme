@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    internal class Meat : SimulationObject
+    internal class Meat : SimulationObject,IFood
     {
         int pv;                             //ex = 5 pv
         int energieParPv;                   //ex = 100 cal        quand un carnivore consomme de la viande,
@@ -21,7 +21,7 @@ namespace ecosysteme.Models
 
         public override void Update()
         {
-            Peremption();
+            Expiration();
         }
 
         protected override void Disappear()
@@ -29,7 +29,12 @@ namespace ecosysteme.Models
 
         }
 
-        private void Peremption() 
+        void IFood.IsEaten() 
+        { 
+            Disappear();
+        }
+
+        private void Expiration() 
         {
             this.peremptionTime--;
 

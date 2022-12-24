@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    internal class OrganicWaste : SimulationObject
+    internal class OrganicWaste : SimulationObject,IFood
     {
         int pv;                             
         int energieParPv;                   
@@ -22,6 +22,11 @@ namespace ecosysteme.Models
         }
         protected override void Disappear()
         {
+        }
+
+        void IFood.IsEaten()
+        {
+
         }
     }
 }

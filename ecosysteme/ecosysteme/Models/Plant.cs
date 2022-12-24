@@ -21,5 +21,11 @@ namespace ecosysteme.Models
             SetAppearObj(new OrganicWaste(X, Y, 1, 20));
             base.Disappear();
         }
+
+        protected override void Eat(IFood consomable)
+        {
+
+        }
+        protected override void Reproduce() { }
     }
 }

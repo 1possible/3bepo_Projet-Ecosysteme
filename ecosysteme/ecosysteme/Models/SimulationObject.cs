@@ -21,6 +21,7 @@ namespace ecosysteme.Models
 
         }
         abstract public void Update();
+
         protected virtual void Disappear()
         {
             disappearValue = true;
@@ -30,6 +31,7 @@ namespace ecosysteme.Models
         public bool GetDisappearValue() { return disappearValue; }
         protected void SetDisappearValue(bool value) { disappearValue = value; }
         protected void SetAppearObj(SimulationObject value) { appearObj = value; }
+
 
 
         public SimulationObject appear()

@@ -27,8 +27,9 @@ namespace ecosysteme.Models
         {
             consumeEnergie();
             isDeath();
+
         }
-        protected void consumeEnergie()
+        protected void ConsumeEnergie()
         {
             if (this.energie - this.consomationEnergie >= 0)
             {
@@ -49,8 +50,9 @@ namespace ecosysteme.Models
             }
         }
 
-        //abstract protected void death();
-        //abstract protected void feed();
-        //abstract protected void reproduce();
+        abstract protected void Eat(IFood consomable);
+
+
+        abstract protected void Reproduce();
     }
 }
