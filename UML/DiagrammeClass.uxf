@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>980</y>
+      <w>170</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>/Animal/
+--
+-nbrViande : int
+--
++Update():void
+#Disappear():void
++Move(int speed):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>690</y>
+      <w>200</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>/LifeForrm/
+--
+-pv:int
+-pvMax:int
+-energie:int
+-energieMax:int
+-consomationEnergie:int
+--
++Update():void
+#ConsumeEnergie():void
+#isDeath():void
+/#Eat(IFood):void/
+/#Reproduce():void/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>950</x>
+      <y>380</y>
+      <w>310</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>/SimulationObject/
+--
+-disappearValue:bool
+-appearObj:SimulationObject
+-observers:List&lt;IObserver&gt;
+--
+/+Update():void/
+#Disappear():void
++GetDisappearValue():bool
+#SetDisappearValue(bool):void
+#SetAppearObj(SimulationObject):void
++appear():SimulationObject
++addObserver(IObserver):void
++removeObserver(IObserver):void
++callObserver(IObserver):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>600</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>900</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>170</y>
+      <w>140</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>/DrawableObject/
+--
+-color: Color
+- x,y : Double
+--
++Color{get colot}
++ X {get x, set x}
++ Y {get y, set y}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>950</x>
+      <y>290</y>
+      <w>90</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1130</x>
+      <y>170</y>
+      <w>250</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+/IObservable/
+--
+-listObserver:List&lt;IObserver&gt;
+--
++addObserver(IObserver):void
++removeObserver(IObserver):void
++callObserver():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>280</y>
+      <w>100</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>1000</y>
+      <w>220</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Plant
+--
+--
+#Disappear():void
+#eat(IFood):void
+#protected Reproduce():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>1250</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Carnivore
+--
+--
++Update():void
+#Eat(IFood food):void
+#Reproduce():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>1240</y>
+      <w>200</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Herbivore
+--
+--
++Update():void
+#Eat(IFood food):void
+#Reproduce():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1090</y>
+      <w>180</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>1090</y>
+      <w>150</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1400</x>
+      <y>460</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+/IFood/
+--
++isEaten():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>460</y>
+      <w>230</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+/IObserver/
+--
+--
++notify(IObservable):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>630</y>
+      <w>280</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ListSimulationObject
+--
+-objAdd:List&lt;SimulationObject&gt;
+-objRemove:List&lt;SimulationObject&gt;
+--
++notify(IObservable)
++update():void
+-temporaireAdd(SimulationObject)
+-removeTemp(SimulationObject)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>530</y>
+      <w>160</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>470</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>List&lt;SimulationObject&gt;
+--
+--
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>410</x>
+      <y>500</y>
+      <w>180</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1030</x>
+      <y>900</y>
+      <w>180</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>700</y>
+      <w>190</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Meat
+--
+-pv:int
+-energieParPv:int
+-peremptionTime:int
+--
++Update():void
+#Disappear():void
++IsEaten():void
+-Expiration():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>600</y>
+      <w>200</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1310</x>
+      <y>520</y>
+      <w>150</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1510</x>
+      <y>700</y>
+      <w>180</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>OrganicWaste
+--
+-pv:int
+-energieParPv:int
+--
++Update()
+#Disppear()
++IsEaten</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1450</x>
+      <y>520</y>
+      <w>170</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1230</x>
+      <y>600</y>
+      <w>390</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;370.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>610</y>
+      <w>220</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Simulation
+--
+-objects:ListSimulationObject
+--
++Update():void
++Draw(ICanvas, RectF):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>430</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+/IDrawable/
+--
+--
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>100</x>
+      <y>490</y>
+      <w>40</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>1010</y>
+      <w>170</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Zone
+--
+-rayon:double
+--
++getRayon():double</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
