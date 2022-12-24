@@ -25,7 +25,7 @@ namespace ecosysteme.Models
 
         public override void Update()
         {
-            consumeEnergie();
+            ConsumeEnergie();
             isDeath();
 
         }
