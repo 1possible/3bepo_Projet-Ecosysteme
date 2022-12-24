@@ -20,7 +20,7 @@ namespace ecosysteme.Models
         public override void Update()
         {
         }
-        public override void Disappear()
+        protected override void Disappear()
         {
         }
     }

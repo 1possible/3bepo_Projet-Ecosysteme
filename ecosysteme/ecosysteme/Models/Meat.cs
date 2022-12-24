@@ -24,7 +24,7 @@ namespace ecosysteme.Models
             Peremption();
         }
 
-        public override void Disappear()
+        protected override void Disappear()
         {
 
         }

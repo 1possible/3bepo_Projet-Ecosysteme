@@ -19,9 +19,10 @@ namespace ecosysteme.Models
             base.Update();  
         }
 
-        public override void Disappear()
+        protected override void Disappear()
         {
-
+            SetAppearObj(new Meat(X, Y, 1, nbrViande,10));
+            base.Disappear();
         }
 
         public void Move(int speed)

@@ -26,6 +26,7 @@ namespace ecosysteme.Models
         public override void Update()
         {
             consumeEnergie();
+            isDeath();
         }
         protected void consumeEnergie()
         {
@@ -39,6 +40,13 @@ namespace ecosysteme.Models
                 this.energie = 0;
             }
 
+        }
+        protected void isDeath()
+        {
+            if (this.pv <= 0) 
+            {
+                Disappear();
+            }
         }
 
         //abstract protected void death();

@@ -8,10 +8,10 @@ namespace ecosysteme.Models
 {
     public class Simulation : IDrawable
     {
-        List<SimulationObject> objects;
+        ListSimulationObject objects;
         public Simulation()
         {
-            objects = new List<SimulationObject>();
+            objects = new ListSimulationObject();
 
             objects.Add(new Carnivore(100, 150));
             objects.Add(new Herbivore(100, 100));
@@ -22,6 +22,11 @@ namespace ecosysteme.Models
             objects.Add(new Plant(50, 100));
             objects.Add(new OrganicWaste(20,20,100,5));
             objects.Add(new Meat(40, 40, 100, 5,100));
+
+            foreach(var obj in objects)
+            {
+                obj.addObserver(objects);
+            }
         }
 
         public void Update()
@@ -30,6 +35,7 @@ namespace ecosysteme.Models
             {
                 simObj.Update();
             }
+            objects.update();
         }
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
