@@ -10,15 +10,12 @@ namespace ecosysteme.Models
     {
         bool disappearValue;
         SimulationObject appearObj;
-
         List<IObserver> observers;
-
         public SimulationObject(Color color, double x, double y) : base(color, x, y)
         {
             disappearValue = false;
             appearObj = null;
             observers = new List<IObserver>();
-
         }
         abstract public void Update();
 

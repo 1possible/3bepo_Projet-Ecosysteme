@@ -8,12 +8,18 @@ namespace ecosysteme.Models
 {
     public class Plant : LifeForm
     {
+        Zone spreadZone = new Zone(50);
+        Zone rootZone = new Zone(20);
+        int reproTime;
+        public Plant(double x, double y) : base(Colors.Green, x, y, 20, 20, 1) 
+        {
 
-        public Plant(double x, double y) : base(Colors.Green, x, y, 20, 20, 1) { }
+        }
 
         public override void Update()
         {
             base.Update();
+            Reproduce();
         }
 
         protected override void Disappear()
@@ -26,6 +32,21 @@ namespace ecosysteme.Models
         {
 
         }
-        protected override void Reproduce() { }
+        protected override void Reproduce() 
+        {
+            reproTime--;
+
+            List<double[]> spreadArea = spreadZone.Area(X, Y);
+            
+            Random rnd = new Random();
+            int randomCoord = rnd.Next(0, spreadArea.Count);
+            
+            if (reproTime <= 0)
+            {
+                //fait apparaitre une plante à des coordonnées aléatoires dans la zone.
+                SetAppearObj(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1]));
+                reproTime = 5;
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace ecosysteme.Models
             objects.Add(new Herbivore(100, 100));
             objects.Add(new Plant(50, 100));
             objects.Add(new OrganicWaste(20,20,100,5));
-            objects.Add(new Meat(40, 40, 100, 5,100));
+            objects.Add(new Meat(40, 40, 100, 5,10));
 
             foreach(var obj in objects)
             {
@@ -31,9 +31,9 @@ namespace ecosysteme.Models
 
         public void Update()
         {
-            foreach (SimulationObject simObj in objects)
+            foreach (SimulationObject simobj in objects)
             {
-                simObj.Update();
+                simobj.Update();
             }
             objects.update();
         }

@@ -21,7 +21,7 @@ namespace ecosysteme.Models
 
         protected override void Disappear()
         {
-            SetAppearObj(new Meat(X, Y, 1, nbrViande,10));
+            SetAppearObj(new Meat(X, Y, 100, nbrViande,10));
             base.Disappear();
         }
 

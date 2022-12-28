@@ -26,19 +26,20 @@ namespace ecosysteme.Models
 
         protected override void Disappear()
         {
-
+            SetAppearObj(new OrganicWaste(X, Y, 1, 20));
+            base.Disappear();
         }
 
         void IFood.IsEaten() 
-        { 
+        {
             Disappear();
         }
 
-        private void Expiration() 
+        protected void Expiration() 
         {
-            this.peremptionTime--;
+            peremptionTime--;
 
-            if (this.peremptionTime <= 0) 
+            if (peremptionTime <= 0) 
             {
                 Disappear();
             }

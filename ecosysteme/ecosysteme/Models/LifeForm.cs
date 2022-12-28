@@ -13,7 +13,7 @@ namespace ecosysteme.Models
         int energie;
         int energieMax;
         int consomationEnergie;
-
+        
         public LifeForm(Color color, double x, double y, int pv, int energie,int consEne) : base(color, x, y) {
        
             this.pv = pv;
@@ -21,13 +21,14 @@ namespace ecosysteme.Models
             this.energie = energie;
             this.energieMax = energie;
             this.consomationEnergie = consEne;
+            
         }
 
         public override void Update()
         {
             ConsumeEnergie();
             isDeath();
-
+            
         }
         protected void ConsumeEnergie()
         {
