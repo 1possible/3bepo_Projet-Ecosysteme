@@ -5,15 +5,19 @@
     <id>UMLClass</id>
     <coordinates>
       <x>710</x>
-      <y>980</y>
-      <w>170</w>
-      <h>120</h>
+      <y>810</y>
+      <w>250</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>/Animal/
 --
 -nbrViande : int
+-timeForOrganiqueWast:int
+-currentTimeForOrganiqueWaste
+-nbrOrganiqueWastePerTime:int
 --
 +Update():void
+#organicWastePeriodic():void
 #Disappear():void
 +Move(int speed):void
 </panel_attributes>
@@ -23,7 +27,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>910</x>
-      <y>690</y>
+      <y>520</y>
       <w>200</w>
       <h>220</h>
     </coordinates>
@@ -47,7 +51,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>950</x>
-      <y>380</y>
+      <y>210</y>
       <w>310</w>
       <h>230</h>
     </coordinates>
@@ -73,7 +77,7 @@
     <id>Relation</id>
     <coordinates>
       <x>980</x>
-      <y>600</y>
+      <y>430</y>
       <w>60</w>
       <h>110</h>
     </coordinates>
@@ -84,7 +88,7 @@
     <id>Relation</id>
     <coordinates>
       <x>790</x>
-      <y>900</y>
+      <y>730</y>
       <w>190</w>
       <h>100</h>
     </coordinates>
@@ -95,7 +99,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>890</x>
-      <y>170</y>
+      <y>0</y>
       <w>140</w>
       <h>130</h>
     </coordinates>
@@ -113,7 +117,7 @@
     <id>Relation</id>
     <coordinates>
       <x>950</x>
-      <y>290</y>
+      <y>120</y>
       <w>90</w>
       <h>110</h>
     </coordinates>
@@ -124,7 +128,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1130</x>
-      <y>170</y>
+      <y>0</y>
       <w>250</w>
       <h>120</h>
     </coordinates>
@@ -142,7 +146,7 @@
     <id>Relation</id>
     <coordinates>
       <x>1170</x>
-      <y>280</y>
+      <y>110</y>
       <w>100</w>
       <h>120</h>
     </coordinates>
@@ -153,12 +157,15 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1080</x>
-      <y>1000</y>
+      <y>830</y>
       <w>220</w>
-      <h>110</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>Plant
 --
+-spreadZone:Zone
+-rootZone:Zone
+-reproTime:int
 --
 #Disappear():void
 #eat(IFood):void
@@ -170,7 +177,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>520</x>
-      <y>1250</y>
+      <y>1080</y>
       <w>190</w>
       <h>80</h>
     </coordinates>
@@ -186,7 +193,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>840</x>
-      <y>1240</y>
+      <y>1070</y>
       <w>200</w>
       <h>90</h>
     </coordinates>
@@ -202,29 +209,29 @@
     <id>Relation</id>
     <coordinates>
       <x>600</x>
-      <y>1090</y>
+      <y>970</y>
       <w>180</w>
-      <h>180</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;10.0;160.0</additional_attributes>
+    <additional_attributes>160.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>820</x>
-      <y>1090</y>
+      <y>970</y>
       <w>150</w>
-      <h>170</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>1400</x>
-      <y>460</y>
+      <y>290</y>
       <w>130</w>
       <h>70</h>
     </coordinates>
@@ -239,7 +246,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>610</x>
-      <y>460</y>
+      <y>290</y>
       <w>230</w>
       <h>80</h>
     </coordinates>
@@ -254,7 +261,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>440</x>
-      <y>630</y>
+      <y>460</y>
       <w>280</w>
       <h>140</h>
     </coordinates>
@@ -273,7 +280,7 @@
     <id>Relation</id>
     <coordinates>
       <x>580</x>
-      <y>530</y>
+      <y>360</y>
       <w>160</w>
       <h>120</h>
     </coordinates>
@@ -284,7 +291,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>340</x>
-      <y>470</y>
+      <y>300</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
@@ -298,7 +305,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>410</x>
-      <y>500</y>
+      <y>330</y>
       <w>180</w>
       <h>150</h>
     </coordinates>
@@ -309,7 +316,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1030</x>
-      <y>900</y>
+      <y>730</y>
       <w>180</w>
       <h>120</h>
     </coordinates>
@@ -320,7 +327,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1220</x>
-      <y>700</y>
+      <y>530</y>
       <w>190</w>
       <h>160</h>
     </coordinates>
@@ -333,14 +340,14 @@ bg=blue</panel_attributes>
 +Update():void
 #Disappear():void
 +IsEaten():void
--Expiration():void</panel_attributes>
+#Expiration():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1140</x>
-      <y>600</y>
+      <y>430</y>
       <w>200</w>
       <h>120</h>
     </coordinates>
@@ -351,7 +358,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1310</x>
-      <y>520</y>
+      <y>350</y>
       <w>150</w>
       <h>200</h>
     </coordinates>
@@ -362,7 +369,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1510</x>
-      <y>700</y>
+      <y>530</y>
       <w>180</w>
       <h>160</h>
     </coordinates>
@@ -380,7 +387,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1450</x>
-      <y>520</y>
+      <y>350</y>
       <w>170</w>
       <h>200</h>
     </coordinates>
@@ -391,7 +398,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1230</x>
-      <y>600</y>
+      <y>430</y>
       <w>390</w>
       <h>120</h>
     </coordinates>
@@ -402,7 +409,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>610</y>
+      <y>440</y>
       <w>220</w>
       <h>90</h>
     </coordinates>
@@ -419,7 +426,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>20</x>
-      <y>430</y>
+      <y>260</y>
       <w>230</w>
       <h>70</h>
     </coordinates>
@@ -435,7 +442,7 @@ bg=blue
     <id>Relation</id>
     <coordinates>
       <x>100</x>
-      <y>490</y>
+      <y>320</y>
       <w>40</w>
       <h>140</h>
     </coordinates>
@@ -445,16 +452,18 @@ bg=blue
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1520</x>
-      <y>1010</y>
-      <w>170</w>
-      <h>70</h>
+      <x>1370</x>
+      <y>830</y>
+      <w>780</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Zone
 --
 -rayon:double
 --
-+getRayon():double</panel_attributes>
++getRayon():double
++Distance(double firstCoordinateX,double firstCoordinateY,double secondCoordinateX,double secondCoordinateY):double
++Area(double x,double y):List&lt;double[]&gt;</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
