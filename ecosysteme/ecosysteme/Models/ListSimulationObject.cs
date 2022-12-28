@@ -68,7 +68,10 @@ namespace ecosysteme.Models
             objRemove.Clear();
         }
         public ListSimulationObject getAll<T>()
-        {
+        {//revoie une ListSimulationObject comprenant tout les composant ayant la class T
+            //pour utilise par exemple : ListSimulationObject exemple = listExemple.getAll<Animal>();
+            //ce qui va renvoye une liste avec tout les animaux de listExemple
+            //marche aussi si la class est une des class parent de l'object
             ListSimulationObject list = new ListSimulationObject();
             foreach (SimulationObject obj in this)
             {
