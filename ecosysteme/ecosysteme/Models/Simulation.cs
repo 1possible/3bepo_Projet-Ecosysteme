@@ -35,7 +35,8 @@ namespace ecosysteme.Models
             {
                 simobj.Update();
             }
-            objects.update();
+            objects.update();//va mettre a jour la liste avec les modification qu'il y a eu
+            //car on peut pas la modifier quand elle est parcourue
         }
 
         public void Draw(ICanvas canvas, RectF dirtyRect)

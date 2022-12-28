@@ -44,6 +44,7 @@ namespace ecosysteme.Models
 
         }
         protected void isDeath()
+            //verifier si l'animal est pas mort(pv<=0) si il est mort appel la fonction Disappear()
         {
             if (this.pv <= 0) 
             {

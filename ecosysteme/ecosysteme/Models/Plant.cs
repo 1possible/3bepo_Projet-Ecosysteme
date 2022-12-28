@@ -23,7 +23,7 @@ namespace ecosysteme.Models
         }
 
         protected override void Disappear()
-        {
+        {//fait apparaitre de la matiere organique et fait disparaitre cet object 
             SetAppearObj(new OrganicWaste(X, Y, 1, 20));
             base.Disappear();
         }
@@ -44,7 +44,7 @@ namespace ecosysteme.Models
             if (reproTime <= 0)
             {
                 //fait apparaitre une plante à des coordonnées aléatoires dans la zone.
-                SetAppearObj(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1]));
+                addToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1]));
                 reproTime = 5;
             }
         }
