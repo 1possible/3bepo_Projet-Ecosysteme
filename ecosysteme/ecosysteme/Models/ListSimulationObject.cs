@@ -67,14 +67,14 @@ namespace ecosysteme.Models
             objAdd.Clear();
             objRemove.Clear();
         }
-        public ListSimulationObject getAll(Type clazz)
+        public ListSimulationObject getAll<T>()
         {
             ListSimulationObject list = new ListSimulationObject();
             foreach (SimulationObject obj in this)
             {
-                if (obj.GetType() == clazz)
+                if (obj is T)
                 {
-                    list.Add((OrganicWaste)obj);
+                    list.Add(obj);
                 }
             }
             return list;
