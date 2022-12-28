@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maui.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,11 +42,27 @@ namespace ecosysteme.Models
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            foreach (SimulationObject drawable in objects)
+            foreach (SimulationObject drawable in objects.getAllOrganicWaste())
             {
-                canvas.FillColor = drawable.Color;
-                canvas.FillCircle(new Point(drawable.X, drawable.Y), 5.0);
+                DrawObject(canvas,dirtyRect,drawable);
             }
+            foreach (SimulationObject drawable in objects.getAllMeat())
+            {
+                DrawObject(canvas, dirtyRect, drawable);
+            }
+            foreach (SimulationObject drawable in objects.getAllPlant())
+            {
+                DrawObject(canvas, dirtyRect, drawable);
+            }
+            foreach (SimulationObject drawable in objects.getAllAnimal())
+            {
+                DrawObject(canvas, dirtyRect, drawable);
+            }
+        }
+        private void DrawObject(ICanvas canvas, RectF dirtyRect, SimulationObject drawable)
+        {
+            canvas.FillColor = drawable.Color;
+            canvas.FillCircle(new Point(drawable.X, drawable.Y), 5.0);
         }
     }
 }

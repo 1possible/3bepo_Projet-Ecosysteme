@@ -67,5 +67,53 @@ namespace ecosysteme.Models
             objAdd.Clear();
             objRemove.Clear();
         }
+        public List<Animal> getAllAnimal()
+        {
+            List<Animal> list = new List<Animal>();
+            foreach(SimulationObject obj in this)
+            {
+                if(obj is Animal)
+                {
+                    list.Add((Animal)obj);
+                }
+            }
+            return list;
+        }
+        public List<Plant> getAllPlant()
+        {
+            List<Plant> list = new List<Plant>();
+            foreach (SimulationObject obj in this)
+            {
+                if (obj is Plant)
+                {
+                    list.Add((Plant)obj);
+                }
+            }
+            return list;
+        }
+        public List<Meat> getAllMeat()
+        {
+            List<Meat> list = new List<Meat>();
+            foreach (SimulationObject obj in this)
+            {
+                if (obj is Meat)
+                {
+                    list.Add((Meat)obj);
+                }
+            }
+            return list;
+        }
+        public List<OrganicWaste> getAllOrganicWaste()
+        {
+            List<OrganicWaste> list = new List<OrganicWaste>();
+            foreach (SimulationObject obj in this)
+            {
+                if (obj is OrganicWaste)
+                {
+                    list.Add((OrganicWaste)obj);
+                }
+            }
+            return list;
+        }
     }
 }
