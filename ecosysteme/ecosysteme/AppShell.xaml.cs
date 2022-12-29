@@ -1,9 +1,11 @@
-﻿namespace ecosysteme;
-
-public partial class AppShell : Shell
+﻿namespace ecosysteme
 {
-	public AppShell()
+	public partial class AppShell : Shell
 	{
-		InitializeComponent();
+        public AppShell()
+		{
+            InitializeComponent();
+		}
 	}
+
 }

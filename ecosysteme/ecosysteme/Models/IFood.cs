@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    internal class Class1
+    public interface IFood
     {
+        abstract public void IsEaten();
     }
 }

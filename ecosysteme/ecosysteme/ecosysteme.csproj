@@ -49,13 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\GlobalEcoSystemView.xaml.cs">
-	    <DependentUpon>GlobalEcoSystemView.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Views\GlobalEcoSystemView.xaml">
+	  <MauiXaml Update="Views\Graphics_EcoSystem.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

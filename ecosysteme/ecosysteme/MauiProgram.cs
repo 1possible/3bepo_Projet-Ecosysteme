@@ -1,6 +1,4 @@
 ﻿namespace ecosysteme;
-
-
 //test
 
 public static class MauiProgram
