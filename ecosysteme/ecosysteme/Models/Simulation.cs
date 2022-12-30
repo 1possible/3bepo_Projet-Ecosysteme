@@ -12,15 +12,16 @@ namespace ecosysteme.Models
         ListSimulationObject objects;
         public Simulation()
         {
+            int i = 0;
+            Random rnd = new Random();
             objects = new ListSimulationObject();
-
-            objects.Add(new Carnivore(100, 150));
-            objects.Add(new Herbivore(100, 100));
-            objects.Add(new Carnivore(100, 150));
-            objects.Add(new Herbivore(100, 100));
-            objects.Add(new Carnivore(100, 150));
-            objects.Add(new Herbivore(100, 100));
-            objects.Add(new Plant(50, 100));
+            while (i<20)
+            {
+                objects.Add(new Herbivore(rnd.Next(1, 1000), rnd.Next(1, 800)));
+                objects.Add(new Carnivore(rnd.Next(1, 1000), rnd.Next(1, 800)));
+                objects.Add(new Plant(rnd.Next(1, 1000), rnd.Next(1, 800)));
+                i++;
+            }
             objects.Add(new OrganicWaste(20,20,100,5));
             objects.Add(new Meat(40, 40, 100, 5,10));
 

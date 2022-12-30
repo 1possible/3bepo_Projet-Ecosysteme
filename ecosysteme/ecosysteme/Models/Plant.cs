@@ -13,7 +13,7 @@ namespace ecosysteme.Models
         int reproTime;
         public Plant(double x, double y) : base(Colors.Green, x, y, 20, 20, 1) 
         {
-
+            reproTime = 15;
         }
 
         public override void Update()
@@ -45,7 +45,7 @@ namespace ecosysteme.Models
             {
                 //fait apparaitre une plante à des coordonnées aléatoires dans la zone.
                 addToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1]));
-                reproTime = 5;
+                reproTime = 15;
             }
         }
     }
