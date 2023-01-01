@@ -8,6 +8,6 @@ namespace ecosysteme.Models
 {
     public interface IFood
     {
-        abstract public void IsEaten();
+        abstract public int IsEaten();
     }
 }

@@ -24,9 +24,9 @@ namespace ecosysteme.Models
         {
         }
 
-        void IFood.IsEaten()
+        int IFood.IsEaten()
         {
-
+            return 1;
         }
     }
 }

@@ -32,12 +32,12 @@ namespace ecosysteme.Models
             addToSimulation(new Herbivore(X, Y));
         }
 
-        protected override void FindMate()
+        protected override void FindMate(ListSimulationObject listEnvironement)
         {
             List<double[]> visionArea = visionZone.Area(X, Y);
             double distance = 10000;
             double[] coordinate = new double[] { 0, 0 };
-            foreach (Herbivore herbi in getAll<Herbivore>())
+            foreach (Herbivore herbi in listEnvironement.getAll<Herbivore>())
             {
                 foreach (double[] coord in visionArea)
                 {
@@ -54,10 +54,10 @@ namespace ecosysteme.Models
             }
             MoveTo(3, coordinate[0], coordinate[1]);
         }
-        protected override void Mate()
+        protected override void Mate(ListSimulationObject listEnvironement)
         {
             List<double[]> contactArea = contactZone.Area(X, Y);
-            foreach (Herbivore herbi in getAll<Herbivore>())
+            foreach (Herbivore herbi in listEnvironement.getAll<Herbivore>())
             {
                 foreach (double[] coord in contactArea) {
                     if (herbi.GetCoord() == coord && this.pregnant == false && this.sex != herbi.sex)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    internal class ListSimulationObject : List<SimulationObject>, IObserver
+    public class ListSimulationObject : List<SimulationObject>, IObserver
     {
         //liste qui va temporairement contenir les objects qu'il faut ajouter ou retirer
         //car on ne peut pas modifier directement la liste quand elle est entrain d'etre parcouru

@@ -13,11 +13,11 @@ namespace ecosysteme.Models
         {
             this.rayon = rayon;
         }
-        public double getRayon() { return this.rayon;}
+        public double getRayon() { return this.rayon; }
 
 
         //outils permettant de choisir une direction pour se rendre vers des coordonnées précise.
-        public static double[] Direction(double departureX,double departureY, double destinationX,double destinationY)   //gives the direction you need to take to go from departure-point to destination-point
+        public static double[] Direction(double departureX, double departureY, double destinationX, double destinationY)   //gives the direction you need to take to go from departure-point to destination-point
         {
             double[] vector = new double[] { destinationX - departureX, destinationY - departureY };
             if (vector[0] == 0)
@@ -58,24 +58,69 @@ namespace ecosysteme.Models
         }
 
         //outil permettant de calculer la distance entre 2 points
-        public static double Distance(double firstCoordinateX,double firstCoordinateY, double secondCoordinateX,double secondCoordinateY)   
+        public static double Distance(double firstCoordinateX, double firstCoordinateY, double secondCoordinateX, double secondCoordinateY)
         {
             return (double)Math.Ceiling(Math.Sqrt(Math.Pow(firstCoordinateX - secondCoordinateX, 2) + Math.Pow(firstCoordinateY - secondCoordinateY, 2)));
             //N.B.: I use Math.Ceiling to always round UP
         }
 
         //renvoi une liste de toutes les coordonnées dans la zone.
-        public List<double[]> Area(double x,double y)
+        public List<double[]> Area(double x, double y)
         {
             List<double[]> answer = new List<double[]>();
             for (double i = x - this.rayon; i <= x + this.rayon; i++)
             {
                 for (double j = y - this.rayon; j <= y + this.rayon; j++)
                 {
-                    if (Distance(i,j,x,y) <= this.rayon) { answer.Add(new double[] { i, j }); }    //carré pour l'instant
+                    if (Distance(i, j, x, y) <= this.rayon) { answer.Add(new double[] { i, j }); }    //carré pour l'instant
                 }
             }
             return answer;
+        }
+
+        //renvoie true si l'object est dans sa zone sinon renvoie false
+        public bool isInZone(double x, double y, double xZone, double yZone)
+        {
+            if (Distance(x, y, xZone, yZone) <= this.rayon)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //renvoie tout les object de la liste qui se trouve dans la zone
+        internal ListSimulationObject whatIsZone(ListSimulationObject listeEnvironement, SimulationObject thisObject)
+        {
+            ListSimulationObject listReturn = new ListSimulationObject();
+            foreach (SimulationObject objectSim in listeEnvironement)
+            {
+                if (objectSim != thisObject)
+                {
+                    if (isInZone(objectSim.X, objectSim.Y, thisObject.X, thisObject.Y))
+                    {
+                        listReturn.Add(objectSim);
+                    }
+                }
+            }
+            return listReturn;
+        }
+        //renvoie l'object le plus proche dans le rayon de la zone si il y pas d'object il renvoie null
+        internal SimulationObject closestObject(ListSimulationObject list, SimulationObject thisObject)
+        {
+            double distance = this.rayon;
+            SimulationObject closest = null;
+            foreach (SimulationObject objectSim in list)
+            {
+                double distanceTemp = Distance(objectSim.X, objectSim.Y, thisObject.X, thisObject.Y);
+                if (distanceTemp < distance)
+                {
+                    closest = objectSim;
+                    distance = distanceTemp;
+                }
+            }
+            return closest;
         }
     }
 }

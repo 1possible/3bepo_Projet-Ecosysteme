@@ -93,8 +93,8 @@ namespace ecosysteme.Models
             }
             else { pregnantTime++; }
         }
-        protected abstract void FindMate();
-        protected abstract void Mate();
+        protected abstract void FindMate(ListSimulationObject listEnvironement);
+        protected abstract void Mate(ListSimulationObject listEnvironement);
 
         protected void GetPregnant()
         {

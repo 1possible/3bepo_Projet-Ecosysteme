@@ -30,9 +30,10 @@ namespace ecosysteme.Models
             base.Disappear();
         }
 
-        void IFood.IsEaten() 
+        int IFood.IsEaten() 
         {
             Disappear();
+            return 1;
         }
 
         protected void Expiration() 
