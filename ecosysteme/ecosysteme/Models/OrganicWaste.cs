@@ -24,9 +24,21 @@ namespace ecosysteme.Models
         {
         }
 
-        int IFood.IsEaten()
+        int IFood.IsEaten(int nbrPVTake)
         {
-            return 1;
+            int energieGive = 0;
+            if (this.pv - nbrPVTake >= 0)
+            {
+                energieGive = nbrPVTake * energieParPv;
+                this.pv = pv - nbrPVTake;
+            }
+            else
+            {
+                energieGive = pv * energieParPv;
+                pv = 0;
+            }
+            if (this.pv == 0) { Disappear(); }
+            return energieGive;
         }
     }
 }

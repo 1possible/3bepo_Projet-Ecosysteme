@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace ecosysteme.Models
         int energie;
         int energieMax;
         int consomationEnergie;
+        private List<Type> diet;
         
         public LifeForm(Color color, double x, double y, int pv, int energie,int consEne) : base(color, x, y) {
        
@@ -21,9 +23,23 @@ namespace ecosysteme.Models
             this.energie = energie;
             this.energieMax = energie;
             this.consomationEnergie = consEne;
-            
+            diet = new List<Type>();
         }
-
+        protected void SetDiet(List<Type> liste)
+        {
+            diet = new List<Type>();
+            foreach(Type t in liste)
+            {
+                if (typeof(IFood).IsAssignableFrom(t))
+                {
+                    diet.Add(t);
+                }
+                else
+                {
+                    Console.Write(this + " ne peut pas manger " + t + " car ce n'est pas de la nourriture.");
+                }
+            }
+        }
         public override void Update()
         {
             ConsumeEnergie();
@@ -52,7 +68,22 @@ namespace ecosysteme.Models
             }
         }
 
-        abstract protected void Eat(IFood consomable);
+        protected void Eat(IFood consomable)
+        {
+            bool foodenable = false;
+            foreach (Type t in diet)
+            {
+                if (consomable.GetType().IsAssignableFrom(t))
+                {
+                    foodenable = true;
+                }
+            }
+            if (foodenable)
+            {
+                int energiefood = consomable.IsEaten();
+                this.energie = (energiefood + this.energie > energieMax)? energiefood + this.energie :energieMax;
+            }
+        }
 
 
         abstract protected void Reproduce();

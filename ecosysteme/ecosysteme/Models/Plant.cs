@@ -28,10 +28,6 @@ namespace ecosysteme.Models
             base.Disappear();
         }
 
-        protected override void Eat(IFood consomable)
-        {
-
-        }
         protected override void Reproduce() 
         {
             reproTime--;

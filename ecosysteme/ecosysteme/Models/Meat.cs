@@ -30,10 +30,21 @@ namespace ecosysteme.Models
             base.Disappear();
         }
 
-        int IFood.IsEaten() 
+        int IFood.IsEaten(int nbrPVTake) 
         {
-            Disappear();
-            return 1;
+            int energieGive = 0;
+            if(this.pv - nbrPVTake >= 0)
+            {
+                energieGive = nbrPVTake * energieParPv;
+                this.pv = pv - nbrPVTake;
+            }
+            else
+            {
+                energieGive = pv * energieParPv;
+                pv = 0;
+            }
+            if(this.pv== 0) { Disappear(); }
+            return energieGive;
         }
 
         protected void Expiration() 
