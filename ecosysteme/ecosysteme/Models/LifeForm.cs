@@ -14,7 +14,7 @@ namespace ecosysteme.Models
         int energie;
         int energieMax;
         int consomationEnergie;
-        private List<Type> diet;
+        private List<Type> diet; //liste de type d'object que this object peut manger
         
         public LifeForm(Color color, double x, double y, int pv, int energie,int consEne) : base(color, x, y) {
        
@@ -70,7 +70,7 @@ namespace ecosysteme.Models
         }
 
         protected void Eat(IFood consomable)
-        {
+        {//fait manger a l'object le consommable si il est d'un type defini dans diet
             bool foodenable = false;
             foreach (Type t in diet)
             {

@@ -82,6 +82,7 @@ namespace ecosysteme.Models
             }
             return list;
         }
+        //renvoie tout les object qui sont de la liste de type que tu as demandé
         public ListSimulationObject getAll(List<Type> types)
         {
             ListSimulationObject list = new ListSimulationObject();

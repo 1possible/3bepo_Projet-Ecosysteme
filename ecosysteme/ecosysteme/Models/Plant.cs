@@ -68,6 +68,7 @@ namespace ecosysteme.Models
             }
             return haveFood;
         }
+        //fonction qui fait manger la plantes la nourriture la plus proche dans sa zone spreadZone
         public void Eat()
         {
             SimulationObject cible = spreadZone.closestObject(this, this.getDiet());
@@ -79,6 +80,7 @@ namespace ecosysteme.Models
                 }
             }
         }
+        //en attendant d'avoir un comportement
         protected void testAlimentaire()
         {
             if (CanEat())
