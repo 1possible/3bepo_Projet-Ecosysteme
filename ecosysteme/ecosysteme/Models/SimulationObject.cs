@@ -17,7 +17,12 @@ namespace ecosysteme.Models
             appearObj = null;
             observers = new List<IObserver>();
         }
-        abstract public void Update();
+        abstract protected void Update();
+
+        virtual public void Update(ListSimulationObject listEnvironement)
+        {
+            Update();
+        }
 
         protected virtual void Disappear()//fait disparaitre l'object
         {

@@ -17,7 +17,7 @@ namespace ecosysteme.Models
             this.energieParPv = energie;
         }
 
-        public override void Update()
+        protected override void Update()
         {
         }
         protected override void Disappear()

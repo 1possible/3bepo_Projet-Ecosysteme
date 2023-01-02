@@ -35,13 +35,19 @@ namespace ecosysteme.Models
             gestationTime = 0;
 
         }
-        public override void Update()
+        protected override void Update()
         {
             base.Update();
             OrganicWastePeriodic();
             if (this.pregnant == true) {
                 PregnancyIteration();
             }
+        }
+        public override void Update(ListSimulationObject listEnvironement)
+        {
+            contactZone.updateObjectInZone(listEnvironement, this);
+            visionZone.updateObjectInZone(listEnvironement, this);
+            base.Update(listEnvironement);
         }
 
         protected void OrganicWastePeriodic() 

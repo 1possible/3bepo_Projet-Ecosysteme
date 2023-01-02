@@ -16,7 +16,7 @@ namespace ecosysteme.Models
             visionZone = new Zone(40);
         }
 
-        public override void Update()
+        protected override void Update()
         {
             base.Update();
             Move(5);

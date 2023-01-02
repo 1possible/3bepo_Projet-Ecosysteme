@@ -19,7 +19,7 @@ namespace ecosysteme.Models
             this.peremptionTime = perTime;
         }
 
-        public override void Update()
+        protected override void Update()
         {
             Expiration();
         }

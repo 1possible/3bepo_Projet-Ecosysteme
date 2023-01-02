@@ -9,11 +9,22 @@ namespace ecosysteme.Models
     public class Zone
     {
         double rayon;
+        ListSimulationObject objectInZone; //va contenir tout les objects qui se trouve dans la zone 
+        //dans etre update toute les frames
+
+        //Amelioration :on peut aussi faire un attribut avec les coord x y comme ca on doit pas passer l'object en argument a chaque fois
         public Zone(double rayon)
         {
             this.rayon = rayon;
         }
         public double getRayon() { return this.rayon; }
+
+        public ListSimulationObject getObjectInZone() { return this.objectInZone; }
+
+        public void updateObjectInZone(ListSimulationObject listEnvironement, SimulationObject thisObject)
+        {
+            objectInZone = whatIsZone(listEnvironement, thisObject);
+        }
 
 
         //outils permettant de choisir une direction pour se rendre vers des coordonnées précise.
@@ -91,7 +102,7 @@ namespace ecosysteme.Models
             }
         }
         //renvoie tout les object de la liste qui se trouve dans la zone
-        internal ListSimulationObject whatIsZone(ListSimulationObject listeEnvironement, SimulationObject thisObject)
+        protected ListSimulationObject whatIsZone(ListSimulationObject listeEnvironement, SimulationObject thisObject)
         {
             ListSimulationObject listReturn = new ListSimulationObject();
             foreach (SimulationObject objectSim in listeEnvironement)
@@ -107,7 +118,7 @@ namespace ecosysteme.Models
             return listReturn;
         }
         //renvoie l'object le plus proche dans le rayon de la zone si il y pas d'object il renvoie null
-        internal SimulationObject closestObject(ListSimulationObject list, SimulationObject thisObject)
+        protected SimulationObject closestObject(ListSimulationObject list, SimulationObject thisObject)
         {
             double distance = this.rayon;
             SimulationObject closest = null;
@@ -121,6 +132,10 @@ namespace ecosysteme.Models
                 }
             }
             return closest;
+        }
+        internal SimulationObject closestObject<T>(SimulationObject thisObject)
+        {
+            return closestObject(objectInZone.getAll<T>(), thisObject);
         }
     }
 }

@@ -16,10 +16,16 @@ namespace ecosysteme.Models
             reproTime = 15;
         }
 
-        public override void Update()
+        protected override void Update()
         {
             base.Update();
             Reproduce();
+        }
+        public override void Update(ListSimulationObject listEnvironement)
+        {
+            spreadZone.updateObjectInZone(listEnvironement, this);
+            rootZone.updateObjectInZone(listEnvironement, this);
+            base.Update(listEnvironement);
         }
 
         protected override void Disappear()

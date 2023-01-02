@@ -35,7 +35,7 @@ namespace ecosysteme.Models
         {
             foreach (SimulationObject simobj in objects)
             {
-                simobj.Update();
+                simobj.Update(objects);
             }
             objects.update();//va mettre a jour la liste avec les modification qu'il y a eu
             //car on peut pas la modifier quand elle est parcourue

@@ -40,7 +40,7 @@ namespace ecosysteme.Models
                 }
             }
         }
-        public override void Update()
+        protected override void Update()
         {
             ConsumeEnergie();
             isDeath();
