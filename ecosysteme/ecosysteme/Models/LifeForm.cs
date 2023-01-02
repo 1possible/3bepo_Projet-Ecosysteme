@@ -25,6 +25,7 @@ namespace ecosysteme.Models
             this.consomationEnergie = consEne;
             diet = new List<Type>();
         }
+        protected List<Type> getDiet() { return diet; }
         protected void SetDiet(List<Type> liste)
         {
             diet = new List<Type>();
@@ -81,9 +82,10 @@ namespace ecosysteme.Models
             if (foodenable)
             {
                 int energiefood = consomable.IsEaten();
-                this.energie = (energiefood + this.energie > energieMax)? energiefood + this.energie :energieMax;
+                this.energie = (energiefood + this.energie < energieMax)? energiefood + this.energie :energieMax;
             }
         }
+
 
 
         abstract protected void Reproduce();

@@ -137,5 +137,10 @@ namespace ecosysteme.Models
         {
             return closestObject(objectInZone.getAll<T>(), thisObject);
         }
+        internal SimulationObject closestObject(SimulationObject thisObject, List<Type> listeType)
+        {
+            return closestObject(objectInZone.getAll(listeType), thisObject);
+        }
+
     }
 }

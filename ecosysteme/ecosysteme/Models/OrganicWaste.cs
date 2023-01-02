@@ -20,9 +20,6 @@ namespace ecosysteme.Models
         protected override void Update()
         {
         }
-        protected override void Disappear()
-        {
-        }
 
         int IFood.IsEaten(int nbrPVTake)
         {

@@ -11,15 +11,23 @@ namespace ecosysteme.Models
         Zone spreadZone = new Zone(50);
         Zone rootZone = new Zone(20);
         int reproTime;
-        public Plant(double x, double y) : base(Colors.Green, x, y, 20, 20, 1) 
+        public Plant(double x, double y) : base(Colors.Green, x, y, 10, 10, 1)
         {
             reproTime = 15;
+            List<Type> diet = new List<Type>
+            {
+                typeof(OrganicWaste)
+            };
+            SetDiet(diet);
         }
-
         protected override void Update()
         {
             base.Update();
-            Reproduce();
+            if (!GetDisappearValue())
+            {
+                Reproduce();
+                testAlimentaire();
+            }
         }
         public override void Update(ListSimulationObject listEnvironement)
         {
@@ -48,6 +56,34 @@ namespace ecosysteme.Models
                 //fait apparaitre une plante à des coordonnées aléatoires dans la zone.
                 addToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1]));
                 reproTime = 15;
+            }
+        }
+        //retourn si oui ou non il y a un object a manger dans sa spreadZone
+        public bool CanEat()
+        {
+            bool haveFood = false;
+            if (spreadZone.getObjectInZone().getAll(this.getDiet()).Count() > 0)
+            {
+                haveFood = true;
+            }
+            return haveFood;
+        }
+        public void Eat()
+        {
+            SimulationObject cible = spreadZone.closestObject(this, this.getDiet());
+            if (cible != null)
+            {
+                if (cible is IFood)
+                {
+                    this.Eat((IFood)cible);
+                }
+            }
+        }
+        protected void testAlimentaire()
+        {
+            if (CanEat())
+            {
+                Eat();
             }
         }
     }

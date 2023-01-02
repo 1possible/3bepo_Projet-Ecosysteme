@@ -82,5 +82,25 @@ namespace ecosysteme.Models
             }
             return list;
         }
+        public ListSimulationObject getAll(List<Type> types)
+        {
+            ListSimulationObject list = new ListSimulationObject();
+            foreach (SimulationObject obj in this)
+            {
+                bool isTypes = false;
+                foreach (Type type in types)
+                {
+                    if (obj.GetType().IsAssignableFrom(type))
+                    {
+                        isTypes = true;
+                    }
+                }
+                if(isTypes)
+                {
+                    list.Add(obj);
+                }
+            }
+            return list;
+        }
     }
 }
