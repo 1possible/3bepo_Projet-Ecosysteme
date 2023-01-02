@@ -79,8 +79,8 @@ namespace ecosysteme.Models
             }
             else 
             {
-                X += speed * Zone.Direction(x,y,X,Y)[0];
-                Y += speed * Zone.Direction(x,y,X,Y)[1];
+                X += speed * Zone.Direction(X,Y,x,y)[0];
+                Y += speed * Zone.Direction(X,Y,x,y)[1];
             }
         }
         private void PregnancyIteration()
