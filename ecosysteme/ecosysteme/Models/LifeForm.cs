@@ -25,6 +25,8 @@ namespace ecosysteme.Models
             this.consomationEnergie = consEne;
             diet = new List<Type>();
         }
+        public (int,int) getPv() { return (pv,pvMax); }
+        public (int, int) getEnergie() { return (energie, energieMax); }
         protected List<Type> getDiet() { return diet; }
         protected void SetDiet(List<Type> liste)
         {

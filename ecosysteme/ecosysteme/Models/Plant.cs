@@ -11,6 +11,7 @@ namespace ecosysteme.Models
         Zone spreadZone = new Zone(50);
         Zone rootZone = new Zone(20);
         int reproTime;
+        IComportement<Plant> comportement;
         public Plant(double x, double y) : base(Colors.Green, x, y, 10, 10, 1)
         {
             reproTime = 15;
@@ -19,6 +20,7 @@ namespace ecosysteme.Models
                 typeof(OrganicWaste)
             };
             SetDiet(diet);
+            comportement = new ComportementPlantDefault(this);
         }
         protected override void Update()
         {
@@ -26,7 +28,7 @@ namespace ecosysteme.Models
             if (!GetDisappearValue())
             {
                 Reproduce();
-                testAlimentaire();
+                comportement.UpdateEtat(this);
             }
         }
         public override void Update(ListSimulationObject listEnvironement)
@@ -78,14 +80,6 @@ namespace ecosysteme.Models
                 {
                     this.Eat((IFood)cible);
                 }
-            }
-        }
-        //en attendant d'avoir un comportement
-        protected void testAlimentaire()
-        {
-            if (CanEat())
-            {
-                Eat();
             }
         }
     }
