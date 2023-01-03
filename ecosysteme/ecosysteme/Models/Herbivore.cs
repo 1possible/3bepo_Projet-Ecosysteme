@@ -17,12 +17,13 @@ namespace ecosysteme.Models
             {
                 typeof(Plant)
             });
+            speed = 3;
         }
 
         protected override void Update()
         {
             base.Update();
-            base.Move(3);
+            base.Move(speed);
         }
 
 

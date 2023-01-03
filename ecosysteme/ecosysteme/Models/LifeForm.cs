@@ -110,7 +110,7 @@ namespace ecosysteme.Models
 
         }
         //retourn si oui ou non il y a un object a manger dans sa spreadZone
-        protected bool CanEat(Zone zoneNourriture)
+        protected bool foodInZone(Zone zoneNourriture)
         {
             bool haveFood = false;
             if (zoneNourriture.getObjectInZone().getAll(this.getDiet()).Count() > 0)

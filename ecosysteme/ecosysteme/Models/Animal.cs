@@ -20,6 +20,7 @@ namespace ecosysteme.Models
         protected bool pregnant;
         protected int pregnantTime;
         protected int gestationTime;
+        protected int speed;
 
         public Animal(Color color,double x, double y, int pv, int energie, int consEne, int nbrViande) : base(color, x, y, pv , energie ,consEne) 
         {
@@ -35,6 +36,7 @@ namespace ecosysteme.Models
             gestationTime = 0;
 
         }
+        public int GetSpeed() { return speed; }
         protected override void Update()
         {
             base.Update();
@@ -112,11 +114,19 @@ namespace ecosysteme.Models
         //---fonction Alimentation---
         public override bool CanEat()
         {
-            return CanEat(contactZone);
+            return foodInZone(contactZone);
         }
         public override void Eat()
         {
             Eat(contactZone);
+        }
+        public bool SeeFood()
+        {
+            return foodInZone(contactZone);
+        }
+        public SimulationObject closestFood()
+        {
+            return visionZone.closestObject(this, getDiet());
         }
     }
 }

@@ -18,12 +18,13 @@ namespace ecosysteme.Models
             {
                 typeof(Meat)
             });
+            speed = 5;
         }
 
         protected override void Update()
         {
             base.Update();
-            Move(5);
+            Move(speed);
         }
 
         protected override void Reproduce() 

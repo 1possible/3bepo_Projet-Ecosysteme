@@ -67,7 +67,7 @@ namespace ecosysteme.Models
         //retourn si oui ou non il y a un object a manger dans sa spreadZone
         public override bool CanEat()
         {
-            return CanEat(spreadZone);
+            return foodInZone(spreadZone);
         }
         //fonction qui fait manger la plantes la nourriture la plus proche dans sa zone spreadZone
         public override void Eat()
