@@ -9,7 +9,8 @@ namespace ecosysteme.Models
 {
     internal class Carnivore : Animal
     {
-
+        private List<Type> prey; //liste des proie que le carnivore va chasser
+        int attackPower;
         public Carnivore(double x, double y) : base(Colors.Red, x, y, 20, 20, 1, 5)
         {
             contactZone = new Zone(3);
@@ -18,9 +19,28 @@ namespace ecosysteme.Models
             {
                 typeof(Meat)
             });
+            SetPrey(new List<Type>
+            {
+                typeof(Herbivore)
+            });
             speed = 5;
+            attackPower = 5;
         }
-
+        protected void SetPrey(List<Type> liste)
+        {
+            prey = new List<Type>();
+            foreach (Type t in liste)
+            {
+                if (typeof(LifeForm).IsAssignableFrom(t))
+                {
+                    prey.Add(t);
+                }
+                else
+                {
+                    Console.Write(this + " attaquer " + t + " car ce n'est pas vivant.");
+                }
+            }
+        }
         protected override void Update()
         {
             base.Update();
@@ -67,6 +87,14 @@ namespace ecosysteme.Models
                     }
                 }
             }
+        }
+        public bool canAttack()
+        {
+            return ObjectInZone(contactZone, prey);
+        }
+        public void Attack(LifeForm target)
+        {
+            target.losePv(attackPower);
         }
     }
 }

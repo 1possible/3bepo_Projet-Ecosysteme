@@ -109,15 +109,20 @@ namespace ecosysteme.Models
             return pvLose;
 
         }
-        //retourn si oui ou non il y a un object a manger dans sa spreadZone
-        protected bool foodInZone(Zone zoneNourriture)
+
+        protected bool ObjectInZone(Zone zone, List<Type> list)
         {
             bool haveFood = false;
-            if (zoneNourriture.getObjectInZone().getAll(this.getDiet()).Count() > 0)
+            if (zone.getObjectInZone().getAll(list).Count() > 0)
             {
                 haveFood = true;
             }
             return haveFood;
+        }
+        //retourn si oui ou non il y a un object a manger dans sa spreadZone
+        protected bool foodInZone(Zone zoneNourriture)
+        {
+            return ObjectInZone(zoneNourriture, getDiet());
         }
         public abstract bool CanEat();
         //fonction qui fait manger la plantes la nourriture la plus proche dans sa zone spreadZone

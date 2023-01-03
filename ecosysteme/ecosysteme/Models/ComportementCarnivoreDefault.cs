@@ -6,31 +6,33 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public class ComportementAnimalDefault<T> : IComportement<T> where T : Animal
+    internal class ComportementCarnivoreDefault : ComportementAnimalDefault<Carnivore>
     {
-        private enum ComportementEtat {
+        enum ComportementEtat
+        {
             None = 0,
             Alimentation = 1,
             Reproduction = 3,
+            Hunt =4
         }
-        enum ComportementsubEtat{
+        enum ComportementsubEtat
+        {
             None = 0,
-            MoveTo =1,
+            MoveTo = 1,
             Motionless = 2
         }
-        ComportementEtat etat=ComportementEtat.None;
+        ComportementEtat etat = ComportementEtat.None;
         ComportementsubEtat subEtat = ComportementsubEtat.None;
-
-        public ComportementAnimalDefault<T>[] Comportements { get; set; }
-        public virtual void UpdateEtat(T thisObject)
+        public ComportementCarnivoreDefault() { }
+        public override void UpdateEtat(Carnivore thisObject)
         {
-            bool alimentationCond = CondWantFood( thisObject );
+            bool alimentationCond = CondWantFood(thisObject);
             if (alimentationCond && AvailableFoodMoveless(thisObject))
             {
                 subEtat = ComportementsubEtat.Motionless;
                 etat = ComportementEtat.Alimentation;
             }
-            else if(alimentationCond && AvailableFoodMove(thisObject))
+            else if (alimentationCond && AvailableFoodMove(thisObject))
             {
                 subEtat = ComportementsubEtat.MoveTo;
                 etat = ComportementEtat.Alimentation;
@@ -52,7 +54,7 @@ namespace ecosysteme.Models
             }
             ActionEtat(thisObject);
         }
-        protected virtual void ActionEtat(T thisObject)
+        protected override void ActionEtat(Carnivore thisObject)
         {
             switch (etat)
             {
@@ -61,9 +63,19 @@ namespace ecosysteme.Models
                     {
                         ActionAlimentationMoveless(thisObject);
                     }
-                    else if(subEtat == ComportementsubEtat.MoveTo)
+                    else if (subEtat == ComportementsubEtat.MoveTo)
                     {
                         ActionAlimentationMove(thisObject);
+                    }
+                    break;
+                case ComportementEtat.Hunt:
+                    if (subEtat == ComportementsubEtat.Motionless)
+                    {
+                        ActionHuntMoveless(thisObject);
+                    }
+                    else if (subEtat == ComportementsubEtat.MoveTo)
+                    {
+                        ActionHuntMove(thisObject);
                     }
                     break;
                 /*case ComportementEtat.Reproduction:
@@ -81,37 +93,20 @@ namespace ecosysteme.Models
                     break;
             }
         }
-        protected virtual void ActionDefault(T thisObject)
+        protected bool AvailableHuntMove(Carnivore thisObject)
         {
-            thisObject.Move(thisObject.GetSpeed());
+            return false;
         }
-        protected virtual bool CondWantFood(T thisObject)
+        protected bool AvailableHuntMoveless(Carnivore thisObject)
         {
-            (int, int) energie = thisObject.getEnergie();
-            return (double)energie.Item1 / energie.Item2 < 0.5;
+            return false;
         }
-        protected virtual bool AvailableFoodMoveless(T thisObject)
+        protected void ActionHuntMoveless(Carnivore thisObject)
         {
-            return thisObject.CanEat() ;
         }
-        protected virtual bool AvailableFoodMove(T thisObject)
+        protected void ActionHuntMove(Carnivore thisObject)
         {
-            return thisObject.SeeFood();
         }
-        protected virtual void ActionAlimentationMoveless(T thisObject)
-        {
-            thisObject.Eat();
-        }
-        protected virtual void ActionAlimentationMove(T thisObject)
-        {
-            SimulationObject cibleFood = thisObject.closestFood();
-            thisObject.MoveTo(thisObject.GetSpeed(),cibleFood.X,cibleFood.Y);
-        }
-
-        /*protected abstract void ActionReproductionMove(T thisObject);
-        protected abstract void ActionReproductionMoveless(T thisObject);
-        protected abstract bool AvailableReproductionMoveless(T thisObject);
-        protected abstract bool AvailableReproductionMove(T thisObject);*/
 
     }
 }
