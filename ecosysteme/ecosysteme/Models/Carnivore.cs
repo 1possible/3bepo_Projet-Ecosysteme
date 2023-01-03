@@ -9,6 +9,7 @@ namespace ecosysteme.Models
 {
     internal class Carnivore : Animal
     {
+        IComportement<Carnivore> comportement;
         private List<Type> prey; //liste des proie que le carnivore va chasser
         int attackPower;
         public Carnivore(double x, double y) : base(Colors.Red, x, y, 20, 20, 1, 5)
@@ -25,6 +26,7 @@ namespace ecosysteme.Models
             });
             speed = 5;
             attackPower = 5;
+            comportement = new ComportementCarnivoreDefault();
         }
         protected void SetPrey(List<Type> liste)
         {
