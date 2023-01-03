@@ -19,7 +19,7 @@ namespace ecosysteme.Models
         public void UpdateEtat(Plant thisObject)
         {
             (int,int) energie = thisObject.getEnergie();
-            if (energie.Item1 / energie.Item2 < 0.5 && thisObject.CanEat())
+            if ((double)energie.Item1 / energie.Item2 < 0.5 && thisObject.CanEat())
             {
                 etat = etatComportementBase.Alimentation;
             }

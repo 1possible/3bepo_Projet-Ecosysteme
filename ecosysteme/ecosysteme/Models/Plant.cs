@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public class Plant : LifeForm
+    public class Plant : LifeForm, IFood
     {
         Zone spreadZone = new Zone(50);
         Zone rootZone = new Zone(20);
         int reproTime;
         IComportement<Plant> comportement;
-        public Plant(double x, double y) : base(Colors.Green, x, y, 10, 10, 1)
+        int energiePerPv;
+        public Plant(double x, double y,int energiePerPv) : base(Colors.Green, x, y, 10, 10, 1)
         {
             reproTime = 15;
             List<Type> diet = new List<Type>
@@ -21,6 +22,7 @@ namespace ecosysteme.Models
             };
             SetDiet(diet);
             comportement = new ComportementPlantDefault(this);
+            this.energiePerPv = energiePerPv;
         }
         protected override void Update()
         {
@@ -56,7 +58,7 @@ namespace ecosysteme.Models
             if (reproTime <= 0)
             {
                 //fait apparaitre une plante à des coordonnées aléatoires dans la zone.
-                addToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1]));
+                addToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1],4));
                 reproTime = 15;
             }
         }
@@ -81,6 +83,12 @@ namespace ecosysteme.Models
                     this.Eat((IFood)cible);
                 }
             }
+        }
+        //
+        public int IsEaten(int nbrPVTake)
+        {
+            int energieGive = losePv(nbrPVTake) * energiePerPv;
+            return energieGive;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace ecosysteme.Models
         ListSimulationObject objects;
         public Simulation()
         {
-            int i = 0;
+            //int i = 0;
             Random rnd = new Random();
             objects = new ListSimulationObject();
             /*while (i<20)
@@ -23,7 +23,7 @@ namespace ecosysteme.Models
                 i++;
             }*/
             objects.Add(new Herbivore(200, 210));
-            objects.Add(new Plant(200, 200));
+            objects.Add(new Plant(200, 200,4));
             objects.Add(new Herbivore(210, 200));
             objects.Add(new OrganicWaste(200,200,100,5));
             objects.Add(new Meat(40, 40, 100, 5,10));

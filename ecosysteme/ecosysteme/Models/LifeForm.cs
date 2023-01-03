@@ -91,5 +91,23 @@ namespace ecosysteme.Models
 
 
         abstract protected void Reproduce();
+
+        public int losePv(int nbrPv)
+        {
+            int pvLose = 0;
+            if(nbrPv > pv)
+            {
+                pvLose = pv;
+                pv = 0;
+            }
+            else
+            {
+                pvLose = nbrPv;
+                pv -= nbrPv;
+                Disappear();
+            }
+            return pvLose;
+
+        }
     }
 }

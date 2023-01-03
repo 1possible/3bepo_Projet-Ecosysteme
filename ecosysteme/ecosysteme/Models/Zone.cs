@@ -109,9 +109,12 @@ namespace ecosysteme.Models
             {
                 if (objectSim != thisObject)
                 {
-                    if (isInZone(objectSim.X, objectSim.Y, thisObject.X, thisObject.Y))
+                    if (!objectSim.GetDisappearValue())
                     {
-                        listReturn.Add(objectSim);
+                        if (isInZone(objectSim.X, objectSim.Y, thisObject.X, thisObject.Y))
+                        {
+                            listReturn.Add(objectSim);
+                        }
                     }
                 }
             }
