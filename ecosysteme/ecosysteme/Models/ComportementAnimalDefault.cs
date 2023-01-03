@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public abstract class ComportementAnimalDefault<T> : IComportement<T> where T : Animal
+    public class ComportementAnimalDefault<T> : IComportement<T> where T : Animal
     {
         protected enum ComportementEtat {
             None = 0,
@@ -21,6 +21,7 @@ namespace ecosysteme.Models
         ComportementEtat etat=ComportementEtat.None;
         ComportementsubEtat subEtat = ComportementsubEtat.None;
 
+        public ComportementAnimalDefault<T>[] Comportements { get; set; }
         public virtual void UpdateEtat(T thisObject)
         {
             bool alimentationCond = CondWantFood( thisObject );
@@ -34,7 +35,7 @@ namespace ecosysteme.Models
                 subEtat = ComportementsubEtat.MoveTo;
                 etat = ComportementEtat.Alimentation;
             }
-            else if (AvailableReproductionMoveless(thisObject))
+            /*else if (AvailableReproductionMoveless(thisObject))
             {
                 subEtat = ComportementsubEtat.Motionless;
                 etat = ComportementEtat.Reproduction;
@@ -43,7 +44,7 @@ namespace ecosysteme.Models
             {
                 subEtat = ComportementsubEtat.MoveTo;
                 etat = ComportementEtat.Reproduction;
-            }
+            }*/
             else
             {
                 subEtat = ComportementsubEtat.None;
@@ -65,7 +66,7 @@ namespace ecosysteme.Models
                         ActionAlimentationMove(thisObject);
                     }
                     break;
-                case ComportementEtat.Reproduction:
+                /*case ComportementEtat.Reproduction:
                     if (subEtat == ComportementsubEtat.Motionless)
                     {
                         ActionReproductionMoveless(thisObject);
@@ -74,7 +75,7 @@ namespace ecosysteme.Models
                     {
                         ActionReproductionMove(thisObject);
                     }
-                    break;
+                    break;*/
                 default:
                     ActionDefault(thisObject);
                     break;
@@ -107,10 +108,10 @@ namespace ecosysteme.Models
             thisObject.MoveTo(thisObject.GetSpeed(),cibleFood.X,cibleFood.Y);
         }
 
-        protected abstract void ActionReproductionMove(T thisObject);
+        /*protected abstract void ActionReproductionMove(T thisObject);
         protected abstract void ActionReproductionMoveless(T thisObject);
         protected abstract bool AvailableReproductionMoveless(T thisObject);
-        protected abstract bool AvailableReproductionMove(T thisObject);
+        protected abstract bool AvailableReproductionMove(T thisObject);*/
 
     }
 }

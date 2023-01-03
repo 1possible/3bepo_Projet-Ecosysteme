@@ -122,7 +122,7 @@ namespace ecosysteme.Models
         }
         public bool SeeFood()
         {
-            return foodInZone(contactZone);
+            return foodInZone(visionZone);
         }
         public SimulationObject closestFood()
         {

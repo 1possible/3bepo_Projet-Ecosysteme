@@ -95,16 +95,16 @@ namespace ecosysteme.Models
         public int losePv(int nbrPv)
         {
             int pvLose = 0;
-            if(nbrPv > pv)
+            if(nbrPv >= pv)
             {
                 pvLose = pv;
                 pv = 0;
+                Disappear();
             }
             else
             {
                 pvLose = nbrPv;
                 pv -= nbrPv;
-                Disappear();
             }
             return pvLose;
 

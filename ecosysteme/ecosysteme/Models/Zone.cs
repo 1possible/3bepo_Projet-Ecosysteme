@@ -128,7 +128,7 @@ namespace ecosysteme.Models
             foreach (SimulationObject objectSim in list)
             {
                 double distanceTemp = Distance(objectSim.X, objectSim.Y, thisObject.X, thisObject.Y);
-                if (distanceTemp < distance)
+                if (distanceTemp <= distance)
                 {
                     closest = objectSim;
                     distance = distanceTemp;

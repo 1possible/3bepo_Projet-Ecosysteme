@@ -9,6 +9,7 @@ namespace ecosysteme.Models
 {
     internal class Herbivore : Animal
     {
+        IComportement<Herbivore> comportement;
         public Herbivore(double x, double y) : base(Colors.Black, x, y, 20, 20, 1,5)
         {
             contactZone = new Zone(2);
@@ -18,12 +19,14 @@ namespace ecosysteme.Models
                 typeof(Plant)
             });
             speed = 3;
+            comportement = new ComportementAnimalDefault<Herbivore>();
         }
 
         protected override void Update()
         {
             base.Update();
-            base.Move(speed);
+            //base.Move(speed);
+            comportement.UpdateEtat(this);
         }
 
 
