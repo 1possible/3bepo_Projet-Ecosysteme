@@ -109,5 +109,29 @@ namespace ecosysteme.Models
             return pvLose;
 
         }
+        //retourn si oui ou non il y a un object a manger dans sa spreadZone
+        protected bool CanEat(Zone zoneNourriture)
+        {
+            bool haveFood = false;
+            if (zoneNourriture.getObjectInZone().getAll(this.getDiet()).Count() > 0)
+            {
+                haveFood = true;
+            }
+            return haveFood;
+        }
+        public abstract bool CanEat();
+        //fonction qui fait manger la plantes la nourriture la plus proche dans sa zone spreadZone
+        protected void Eat(Zone zoneNourriture)
+        {
+            SimulationObject cible = zoneNourriture.closestObject(this, this.getDiet());
+            if (cible != null)
+            {
+                if (cible is IFood)
+                {
+                    this.Eat((IFood)cible);
+                }
+            }
+        }
+        public abstract void Eat();
     }
 }

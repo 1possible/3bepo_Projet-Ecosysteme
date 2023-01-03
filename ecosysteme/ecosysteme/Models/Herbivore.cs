@@ -13,6 +13,10 @@ namespace ecosysteme.Models
         {
             contactZone = new Zone(2);
             visionZone = new Zone(30);
+            SetDiet(new List<Type>
+            {
+                typeof(Plant)
+            });
         }
 
         protected override void Update()

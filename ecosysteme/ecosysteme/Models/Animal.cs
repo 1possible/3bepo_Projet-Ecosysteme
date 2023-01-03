@@ -109,5 +109,14 @@ namespace ecosysteme.Models
                 this.pregnant = true;
             }
         }
+        //---fonction Alimentation---
+        public override bool CanEat()
+        {
+            return CanEat(contactZone);
+        }
+        public override void Eat()
+        {
+            Eat(contactZone);
+        }
     }
 }

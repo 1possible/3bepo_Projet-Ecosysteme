@@ -62,29 +62,19 @@ namespace ecosysteme.Models
                 reproTime = 15;
             }
         }
+
+        //---Fonction Alimentation---
         //retourn si oui ou non il y a un object a manger dans sa spreadZone
-        public bool CanEat()
+        public override bool CanEat()
         {
-            bool haveFood = false;
-            if (spreadZone.getObjectInZone().getAll(this.getDiet()).Count() > 0)
-            {
-                haveFood = true;
-            }
-            return haveFood;
+            return CanEat(spreadZone);
         }
         //fonction qui fait manger la plantes la nourriture la plus proche dans sa zone spreadZone
-        public void Eat()
+        public override void Eat()
         {
-            SimulationObject cible = spreadZone.closestObject(this, this.getDiet());
-            if (cible != null)
-            {
-                if (cible is IFood)
-                {
-                    this.Eat((IFood)cible);
-                }
-            }
+            Eat(spreadZone);
         }
-        //
+        //---interface IFood---
         public int IsEaten(int nbrPVTake)
         {
             int energieGive = losePv(nbrPVTake) * energiePerPv;
