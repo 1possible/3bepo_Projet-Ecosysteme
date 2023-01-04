@@ -30,6 +30,11 @@ namespace ecosysteme.Models
         //outils permettant de choisir une direction pour se rendre vers des coordonnées précise.
         public static double[] Direction(double departureX, double departureY, double destinationX, double destinationY)   //gives the direction you need to take to go from departure-point to destination-point
         {
+            //   (0,0)+------->
+            //        |       x
+            //        |
+            //        |
+            //      y v
             double[] vector = new double[] { destinationX - departureX, destinationY - departureY };
             if (vector[0] == 0)
             {
@@ -44,27 +49,27 @@ namespace ecosysteme.Models
             double sinus = (double)Math.Round((double)(1000 * (vector[1] / vector[0])));
             if (vector[0] > 0 && vector[1] > 0) //1st quadrant
             {
-                if (sinus > 924) { return new double[] { 0, 1 }; } //N
+                if (sinus > 2000) { return new double[] { 0, 1 }; } //S
                 else if (sinus < 383) { return new double[] { 1, 0 }; }    //E
-                else { return new double[] { 1, 1 }; } //NE
+                else { return new double[] { 1, 1 }; } //SE
             }
-            else if (vector[0] > 0 && vector[1] < 0) //2nd quadrant
+            else if (vector[0] > 0 && vector[1] < 0) //4th quadrant
             {
                 if (sinus > -383) { return new double[] { 1, 0 }; }    //E
-                else if (sinus < -924) { return new double[] { 0, -1 }; }  //S
-                else { return new double[] { 1, -1 }; }    //SE
+                else if (sinus < -2000) { return new double[] { 0, -1 }; }  //N
+                else { return new double[] { 1, -1 }; }    //NE
             }
-            else if (vector[0] < 0 && vector[1] < 0) //3rd quadrant
+            else if (vector[0] < 0 && vector[1] > 0) //2nd quadrant
             {
-                if (sinus < -924) { return new double[] { 0, -1 }; }  //S
+                if (sinus < -2000) { return new double[] { 0, -1 }; }  //N
                 else if (sinus > -383) { return new double[] { -1, 0 }; } //O
-                else { return new double[] { -1, -1 }; }   //SO
+                else { return new double[] { -1, -1 }; }   //NO
             }
-            else  //4th quadrant
+            else  //3rd quadrant
             {
                 if (sinus < 383) { return new double[] { -1, 0 }; }    //O
-                else if (sinus > 924) { return new double[] { 0, 1 }; }    //N
-                else { return new double[] { -1, 1 }; }    //NO
+                else if (sinus > 2000) { return new double[] { 0, 1 }; }    //N
+                else { return new double[] { -1, 1 }; }    //SO
             }
         }
 
