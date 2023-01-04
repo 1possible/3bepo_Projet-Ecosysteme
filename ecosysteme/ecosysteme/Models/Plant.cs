@@ -13,7 +13,7 @@ namespace ecosysteme.Models
         int reproTime;
         IComportement<Plant> comportement;
         int energiePerPv;
-        public Plant(double x, double y,int energiePerPv) : base(Colors.Green, x, y, 10, 10, 1)
+        public Plant(double x, double y,int energiePerPv) : base(Colors.Green, x, y, 10, 5, 1)
         {
             reproTime = 15;
             List<Type> diet = new List<Type>

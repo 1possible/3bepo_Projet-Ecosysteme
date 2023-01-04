@@ -9,14 +9,14 @@ namespace ecosysteme.Models
     public class ComportementAnimalDefault<T> : IComportement<T> where T : Animal
     {
         private enum ComportementEtat {
-            None = 0,
-            Alimentation = 1,
-            Reproduction = 3,
+            None,
+            Alimentation,
+            Reproduction
         }
         enum ComportementsubEtat{
-            None = 0,
-            MoveTo =1,
-            Motionless = 2
+            None,
+            MoveTo,
+            Motionless
         }
         ComportementEtat etat=ComportementEtat.None;
         ComportementsubEtat subEtat = ComportementsubEtat.None;

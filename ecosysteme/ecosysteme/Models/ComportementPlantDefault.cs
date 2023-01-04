@@ -10,8 +10,8 @@ namespace ecosysteme.Models
     {
         protected enum etatComportementBase
         {
-            None = 0,
-            Alimentation = 1
+            None,
+            Alimentation
         }
         etatComportementBase etat = etatComportementBase.None;
 

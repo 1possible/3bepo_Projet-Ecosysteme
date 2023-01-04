@@ -10,16 +10,16 @@ namespace ecosysteme.Models
     {
         enum ComportementEtat
         {
-            None = 0,
-            Alimentation = 1,
-            Reproduction = 3,
-            Hunt =4
+            None,
+            Alimentation,
+            Reproduction,
+            Hunt
         }
         enum ComportementsubEtat
         {
-            None = 0,
-            MoveTo = 1,
-            Motionless = 2
+            None,
+            MoveTo,
+            Motionless
         }
         ComportementEtat etat;
         ComportementsubEtat subEtat;
