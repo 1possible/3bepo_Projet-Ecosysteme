@@ -76,7 +76,7 @@ namespace ecosysteme.Models
             Y += rnd.Next(-speed,speed);
         }
 
-        public void MoveTo(int speed, double x, double y) 
+        protected void MoveTo(int speed, double x, double y) 
         {
             double distance = Zone.Distance(x, y, X, Y);
             if (distance < speed ) 
@@ -90,6 +90,7 @@ namespace ecosysteme.Models
                 Y += speed * Zone.Direction(X,Y,x,y)[1];
             }
         }
+        public void MoveTo(double x, double y) { MoveTo(speed, x, y); }
         private void PregnancyIteration()
         {
             if (pregnantTime == gestationTime)

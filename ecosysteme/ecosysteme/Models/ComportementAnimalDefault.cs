@@ -105,7 +105,7 @@ namespace ecosysteme.Models
         protected virtual void ActionAlimentationMove(T thisObject)
         {
             SimulationObject cibleFood = thisObject.closestFood();
-            thisObject.MoveTo(thisObject.GetSpeed(),cibleFood.X,cibleFood.Y);
+            thisObject.MoveTo(cibleFood.X,cibleFood.Y);
         }
 
         protected virtual void ActionReproductionMove(T thisObject)

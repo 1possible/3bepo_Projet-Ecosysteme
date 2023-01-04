@@ -21,9 +21,12 @@ namespace ecosysteme.Models
             MoveTo = 1,
             Motionless = 2
         }
-        ComportementEtat etat = ComportementEtat.None;
-        ComportementsubEtat subEtat = ComportementsubEtat.None;
-        public ComportementCarnivoreDefault() { }
+        ComportementEtat etat;
+        ComportementsubEtat subEtat;
+        public ComportementCarnivoreDefault() {
+            subEtat = ComportementsubEtat.None;
+            etat = ComportementEtat.None;
+        }
         public override void UpdateEtat(Carnivore thisObject)
         {
             bool alimentationCond = CondWantFood(thisObject);
@@ -36,6 +39,16 @@ namespace ecosysteme.Models
             {
                 subEtat = ComportementsubEtat.MoveTo;
                 etat = ComportementEtat.Alimentation;
+            }
+            else if(alimentationCond && AvailableHuntMoveless(thisObject))
+            {
+                subEtat = ComportementsubEtat.Motionless;
+                etat = ComportementEtat.Hunt;
+            }
+            else if (alimentationCond && AvailableHuntMove(thisObject))
+            {
+                subEtat = ComportementsubEtat.MoveTo;
+                etat = ComportementEtat.Hunt;
             }
             else if (AvailableReproductionMoveless(thisObject))
             {
@@ -95,17 +108,23 @@ namespace ecosysteme.Models
         }
         protected bool AvailableHuntMove(Carnivore thisObject)
         {
-            return false;
+            return thisObject.SeePrey();
         }
         protected bool AvailableHuntMoveless(Carnivore thisObject)
         {
-            return false;
+            return thisObject.canAttack();
         }
         protected void ActionHuntMoveless(Carnivore thisObject)
         {
+            thisObject.Attack();
         }
         protected void ActionHuntMove(Carnivore thisObject)
         {
+            SimulationObject target = thisObject.closestSeePrey();
+            if (target != null)
+            {
+                thisObject.MoveTo(target.X, target.Y);
+            }
         }
 
     }

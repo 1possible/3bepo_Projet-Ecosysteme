@@ -12,7 +12,7 @@ namespace ecosysteme.Models
         IComportement<Carnivore> comportement;
         private List<Type> prey; //liste des proie que le carnivore va chasser
         int attackPower;
-        public Carnivore(double x, double y) : base(Colors.Red, x, y, 30, 30, 1, 5)
+        public Carnivore(double x, double y) : base(Colors.Red, x, y, 30, 20, 1, 5)
         {
             contactZone = new Zone(3);
             visionZone = new Zone(40);
@@ -46,7 +46,7 @@ namespace ecosysteme.Models
         protected override void Update()
         {
             base.Update();
-            Move(speed);
+            comportement.UpdateEtat(this);
         }
 
         protected override void Reproduce() 
@@ -94,9 +94,21 @@ namespace ecosysteme.Models
         {
             return ObjectInZone(contactZone, prey);
         }
-        public void Attack(LifeForm target)
+        protected void Attack(LifeForm target)
         {
             target.losePv(attackPower);
+        }
+        public bool SeePrey()
+        {
+            return ObjectInZone(visionZone, prey);
+        }
+        public void Attack()
+        {
+            Attack((LifeForm)contactZone.closestObject(this, prey));
+        }
+        public SimulationObject closestSeePrey()
+        {
+            return visionZone.closestObject(this, prey);
         }
     }
 }
