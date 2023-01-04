@@ -19,7 +19,7 @@ namespace ecosysteme.Models
         }
         public double getRayon() { return this.rayon; }
 
-        public ListSimulationObject getObjectInZone() { return this.objectInZone; }
+        public ListSimulationObject GetObjectInZone() { return this.objectInZone; }
 
         public void updateObjectInZone(ListSimulationObject listEnvironement, SimulationObject thisObject)
         {

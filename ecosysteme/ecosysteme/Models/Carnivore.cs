@@ -12,7 +12,7 @@ namespace ecosysteme.Models
         IComportement<Carnivore> comportement;
         private List<Type> prey; //liste des proie que le carnivore va chasser
         int attackPower;
-        public Carnivore(double x, double y) : base(Colors.Red, x, y, 20, 20, 1, 5)
+        public Carnivore(double x, double y) : base(Colors.Red, x, y, 30, 30, 1, 5)
         {
             contactZone = new Zone(3);
             visionZone = new Zone(40);

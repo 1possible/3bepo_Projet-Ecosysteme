@@ -10,7 +10,7 @@ namespace ecosysteme.Models
     internal class Herbivore : Animal
     {
         IComportement<Herbivore> comportement;
-        public Herbivore(double x, double y) : base(Colors.Black, x, y, 20, 20, 1,5)
+        public Herbivore(double x, double y) : base(Colors.Black, x, y, 5, 20, 1,5)
         {
             contactZone = new Zone(2);
             visionZone = new Zone(30);

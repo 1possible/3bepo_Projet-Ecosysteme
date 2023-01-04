@@ -22,20 +22,19 @@ namespace ecosysteme.Models
         protected int gestationTime;
         protected int speed;
 
-        public Animal(Color color,double x, double y, int pv, int energie, int consEne, int nbrViande) : base(color, x, y, pv , energie ,consEne) 
+        public Animal(Color color,double x, double y, int pv, int energie, int consEne, int nbrViande, int sex) : base(color, x, y, pv , energie ,consEne) 
         {
-            Random rnd = new Random();
-            
             this.nbrViande = nbrViande;
             timeForOrganiqueWaste = 20;
             currentTimeForOrganiqueWaste = 0;
             nbrOganiqueWastePerTime = 2;
-            sex = rnd.Next(2);
+            this.sex = sex;
             pregnant = false;
             pregnantTime = 5;
             gestationTime = 0;
-
         }
+        public Animal(Color color, double x, double y, int pv, int energie, int consEne, int nbrViande) : this(color, x, y, pv, energie, consEne, nbrViande, new Random().Next(2))
+        {}
         public int GetSpeed() { return speed; }
         protected override void Update()
         {
@@ -102,7 +101,9 @@ namespace ecosysteme.Models
             else { pregnantTime++; }
         }
         protected abstract void FindMate(ListSimulationObject listEnvironement);
+        public void FindMate() { FindMate(visionZone.GetObjectInZone()); }
         protected abstract void Mate(ListSimulationObject listEnvironement);
+        public void Mate() { Mate(contactZone.GetObjectInZone()); }
 
         protected void GetPregnant()
         {
@@ -110,6 +111,14 @@ namespace ecosysteme.Models
             {
                 this.pregnant = true;
             }
+        }
+        public bool CanMate()
+        {
+            return ObjectInZone(contactZone, new List<Type> { this.GetType() });
+        }
+        public bool CanFindMate()
+        {
+            return ObjectInZone(visionZone, new List<Type> { this.GetType() });
         }
         //---fonction Alimentation---
         public override bool CanEat()

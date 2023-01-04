@@ -37,7 +37,7 @@ namespace ecosysteme.Models
                 subEtat = ComportementsubEtat.MoveTo;
                 etat = ComportementEtat.Alimentation;
             }
-            /*else if (AvailableReproductionMoveless(thisObject))
+            else if (AvailableReproductionMoveless(thisObject))
             {
                 subEtat = ComportementsubEtat.Motionless;
                 etat = ComportementEtat.Reproduction;
@@ -46,7 +46,7 @@ namespace ecosysteme.Models
             {
                 subEtat = ComportementsubEtat.MoveTo;
                 etat = ComportementEtat.Reproduction;
-            }*/
+            }
             else
             {
                 subEtat = ComportementsubEtat.None;
@@ -78,7 +78,7 @@ namespace ecosysteme.Models
                         ActionHuntMove(thisObject);
                     }
                     break;
-                /*case ComportementEtat.Reproduction:
+                case ComportementEtat.Reproduction:
                     if (subEtat == ComportementsubEtat.Motionless)
                     {
                         ActionReproductionMoveless(thisObject);
@@ -87,7 +87,7 @@ namespace ecosysteme.Models
                     {
                         ActionReproductionMove(thisObject);
                     }
-                    break;*/
+                    break;
                 default:
                     ActionDefault(thisObject);
                     break;

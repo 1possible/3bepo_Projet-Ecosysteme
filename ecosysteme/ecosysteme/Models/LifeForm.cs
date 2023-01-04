@@ -113,7 +113,7 @@ namespace ecosysteme.Models
         protected bool ObjectInZone(Zone zone, List<Type> list)
         {
             bool haveFood = false;
-            if (zone.getObjectInZone().getAll(list).Count() > 0)
+            if (zone.GetObjectInZone().getAll(list).Count() > 0)
             {
                 haveFood = true;
             }
