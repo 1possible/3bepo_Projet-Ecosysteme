@@ -13,13 +13,13 @@ namespace ecosysteme.Models
             Alimentation,
             Reproduction
         }
-        enum ComportementsubEtat{
+        enum ComportementSubEtat{
             None,
             MoveTo,
             Motionless
         }
         ComportementEtat etat=ComportementEtat.None;
-        ComportementsubEtat subEtat = ComportementsubEtat.None;
+        ComportementSubEtat subEtat = ComportementSubEtat.None;
 
         public ComportementAnimalDefault<T>[] Comportements { get; set; }
         public virtual void UpdateEtat(T thisObject)
@@ -27,27 +27,27 @@ namespace ecosysteme.Models
             bool alimentationCond = CondWantFood( thisObject );
             if (alimentationCond && AvailableFoodMoveless(thisObject))
             {
-                subEtat = ComportementsubEtat.Motionless;
+                subEtat = ComportementSubEtat.Motionless;
                 etat = ComportementEtat.Alimentation;
             }
             else if(alimentationCond && AvailableFoodMove(thisObject))
             {
-                subEtat = ComportementsubEtat.MoveTo;
+                subEtat = ComportementSubEtat.MoveTo;
                 etat = ComportementEtat.Alimentation;
             }
             else if (AvailableReproductionMoveless(thisObject))
             {
-                subEtat = ComportementsubEtat.Motionless;
+                subEtat = ComportementSubEtat.Motionless;
                 etat = ComportementEtat.Reproduction;
             }
             else if (AvailableReproductionMove(thisObject))
             {
-                subEtat = ComportementsubEtat.MoveTo;
+                subEtat = ComportementSubEtat.MoveTo;
                 etat = ComportementEtat.Reproduction;
             }
             else
             {
-                subEtat = ComportementsubEtat.None;
+                subEtat = ComportementSubEtat.None;
                 etat = ComportementEtat.None;
             }
             ActionEtat(thisObject);
@@ -57,21 +57,21 @@ namespace ecosysteme.Models
             switch (etat)
             {
                 case ComportementEtat.Alimentation:
-                    if (subEtat == ComportementsubEtat.Motionless)
+                    if (subEtat == ComportementSubEtat.Motionless)
                     {
                         ActionAlimentationMoveless(thisObject);
                     }
-                    else if(subEtat == ComportementsubEtat.MoveTo)
+                    else if(subEtat == ComportementSubEtat.MoveTo)
                     {
                         ActionAlimentationMove(thisObject);
                     }
                     break;
                 case ComportementEtat.Reproduction:
-                    if (subEtat == ComportementsubEtat.Motionless)
+                    if (subEtat == ComportementSubEtat.Motionless)
                     {
                         ActionReproductionMoveless(thisObject);
                     }
-                    else if (subEtat == ComportementsubEtat.MoveTo)
+                    else if (subEtat == ComportementSubEtat.MoveTo)
                     {
                         ActionReproductionMove(thisObject);
                     }
@@ -83,11 +83,11 @@ namespace ecosysteme.Models
         }
         protected virtual void ActionDefault(T thisObject)
         {
-            thisObject.Move(thisObject.GetSpeed());
+            thisObject.Move();
         }
         protected virtual bool CondWantFood(T thisObject)
         {
-            (int, int) energie = thisObject.getEnergie();
+            (int, int) energie = thisObject.GetEnergie();
             return (double)energie.Item1 / energie.Item2 < 0.5;
         }
         protected virtual bool AvailableFoodMoveless(T thisObject)

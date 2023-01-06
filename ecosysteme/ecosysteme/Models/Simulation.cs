@@ -49,19 +49,19 @@ namespace ecosysteme.Models
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            foreach (SimulationObject drawable in objects.getAll<OrganicWaste>())
+            foreach (SimulationObject drawable in objects.GetAll<OrganicWaste>())
             {
                 DrawObject(canvas,dirtyRect,drawable);
             }
-            foreach (SimulationObject drawable in objects.getAll<Meat>())
+            foreach (SimulationObject drawable in objects.GetAll<Meat>())
             {
                 DrawObject(canvas, dirtyRect, drawable);
             }
-            foreach (SimulationObject drawable in objects.getAll<Plant>())
+            foreach (SimulationObject drawable in objects.GetAll<Plant>())
             {
                 DrawObject(canvas, dirtyRect, drawable);
             }
-            foreach (SimulationObject drawable in objects.getAll<Animal>())
+            foreach (SimulationObject drawable in objects.GetAll<Animal>())
             {
                 DrawObject(canvas, dirtyRect, drawable);
             }

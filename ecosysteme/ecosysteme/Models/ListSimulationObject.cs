@@ -26,7 +26,7 @@ namespace ecosysteme.Models
             {
                 if (observable is SimulationObject)
                 {
-                    this.temporaireAdd((observable as SimulationObject).appear());
+                    this.temporaireAdd((observable as SimulationObject).GetAppearObj());
 
                     if ((observable as SimulationObject).GetDisappearValue() == true)
                     {
@@ -35,7 +35,7 @@ namespace ecosysteme.Models
                 }
             }
         }
-        void temporaireAdd(SimulationObject obj)
+        private void temporaireAdd(SimulationObject obj)
         //rajoute dans la liste objAdd pour que l'object soit rajouter dans la liste lors de this.Update()
         {
             if (obj != null)
@@ -43,7 +43,7 @@ namespace ecosysteme.Models
                 objAdd.Add(obj);
             }
         }
-        void removeTemp(SimulationObject simulationObject)
+        private void removeTemp(SimulationObject simulationObject)
         //rajoute dans la liste objRemove pour que l'oject soit retirer de la liste lors de this.Update()
         {
             objRemove.Add(simulationObject);         
@@ -67,7 +67,7 @@ namespace ecosysteme.Models
             objAdd.Clear();
             objRemove.Clear();
         }
-        public ListSimulationObject getAll<T>()
+        public ListSimulationObject GetAll<T>()
         {//revoie une ListSimulationObject comprenant tout les composant ayant la class T
             //pour utilise par exemple : ListSimulationObject exemple = listExemple.getAll<Animal>();
             //ce qui va renvoye une liste avec tout les animaux de listExemple
@@ -83,7 +83,7 @@ namespace ecosysteme.Models
             return list;
         }
         //renvoie tout les object qui sont de la liste de type que tu as demandé
-        public ListSimulationObject getAll(List<Type> types)
+        public ListSimulationObject GetAll(List<Type> types)
         {
             ListSimulationObject list = new ListSimulationObject();
             foreach (SimulationObject obj in this)

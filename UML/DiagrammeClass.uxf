@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.0.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>810</y>
-      <w>250</w>
-      <h>170</h>
+      <x>588</x>
+      <y>805</y>
+      <w>350</w>
+      <h>392</h>
     </coordinates>
     <panel_attributes>/Animal/
 --
@@ -15,21 +15,47 @@
 -timeForOrganiqueWast:int
 -currentTimeForOrganiqueWaste
 -nbrOrganiqueWastePerTime:int
+#contactZone:Zone
+#visionZone:Zone
+#sex:int
+#pregnant:bool
+#pregnatTime:int
+#speed:int
 --
-+Update():void
-#organicWastePeriodic():void
+-GetSpeed():int
+#Update():void
++Update(ListeSimulation listEnvironment):void
+#OrganicWastePeriodic():void
 #Disappear():void
-+Move(int speed):void
++Move():void
+-Move(int speed):void
++MoveTo(double x , double y):void
+-MoveTo(int speed, double x, double y):void
+-PregnancyIteration():void
+#FindMate(ListSimulationObject listEnvironment): ListSimulationObject
++ClosestPartner(ListSimulation list): SimulationObject
++ClosestP():SimulationObject
++Mate():void
+#Mate(ListSimulationObject listEnvironment)
+#GetPregnant:void
++CanMate():bool
++CanFindMate():bool
++CanEat():bool
++Eat():void
++SeeFood():bool
++closestFood():SimulationObject
+
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>910</x>
-      <y>520</y>
-      <w>200</w>
-      <h>220</h>
+      <x>826</x>
+      <y>448</y>
+      <w>175</w>
+      <h>259</h>
     </coordinates>
     <panel_attributes>/LifeForrm/
 --
@@ -38,22 +64,32 @@
 -energie:int
 -energieMax:int
 -consomationEnergie:int
+-diet:List&lt;Type&gt;
 --
++GetPv():(int,int)
++GetEnergie():(int,int)
++GetDiet():List&lt;Type&gt;
+#SetDiet(List&lt;Type&gt; liste):List&lt;Type&gt;
 +Update():void
 #ConsumeEnergie():void
-#isDeath():void
-/#Eat(IFood):void/
+#IsDeath():void
+/+Eat():void/
+#Eat(IFood):void
+#Eat(Zone zoneNourriture):void
 /#Reproduce():void/
++LosePv(int nbrPv):int
+#ObjectInZone(Zone zone, List&lt;Type&gt; list):bool
+/+CanEat():bool/
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>950</x>
-      <y>210</y>
-      <w>310</w>
-      <h>230</h>
+      <x>875</x>
+      <y>224</y>
+      <w>238</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>/SimulationObject/
 --
@@ -61,47 +97,48 @@
 -appearObj:SimulationObject
 -observers:List&lt;IObserver&gt;
 --
-/+Update():void/
+/#Update():void/
++Update(ListSimulationObject listEnvironement):void
 #Disappear():void
 +GetDisappearValue():bool
-#SetDisappearValue(bool):void
-#SetAppearObj(SimulationObject):void
-+appear():SimulationObject
-+addObserver(IObserver):void
-+removeObserver(IObserver):void
-+callObserver(IObserver):void
+-SetAppearObj(SimulationObject value):void
++GetAppearObj():SimulationObject
+#AddToSimulation(SimulationObject value):void
++addObserver(IObserver observer):void
++removeObserver(IObserver observer):void
++callObserver(IObserver observer):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>980</x>
-      <y>430</y>
-      <w>60</w>
-      <h>110</h>
+      <x>875</x>
+      <y>385</y>
+      <w>63</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>730</y>
-      <w>190</w>
-      <h>100</h>
+      <x>840</x>
+      <y>700</y>
+      <w>35</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>170.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>30.0;10.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>890</x>
-      <y>0</y>
-      <w>140</w>
-      <h>130</h>
+      <x>735</x>
+      <y>49</y>
+      <w>98</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>/DrawableObject/
 --
@@ -116,21 +153,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>120</y>
-      <w>90</w>
-      <h>110</h>
+      <x>777</x>
+      <y>133</y>
+      <w>161</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;210.0;130.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1130</x>
-      <y>0</y>
-      <w>250</w>
-      <h>120</h>
+      <x>1050</x>
+      <y>56</y>
+      <w>175</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 /IObservable/
@@ -145,60 +182,77 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1170</x>
-      <y>110</y>
-      <w>100</w>
-      <h>120</h>
+      <x>1029</x>
+      <y>133</y>
+      <w>119</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1080</x>
-      <y>830</y>
-      <w>220</w>
-      <h>160</h>
+      <x>966</x>
+      <y>1246</y>
+      <w>154</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>Plant
 --
 -spreadZone:Zone
 -rootZone:Zone
 -reproTime:int
+-comportement:IComportement&lt;Plant&gt;
+-energiePerPv:int
 --
+#Update():void
++Update(ListeSimulation listEnvironment):void
 #Disappear():void
-#eat(IFood):void
++CanEat():bool
+#Eat():void
++IsEaten(int nbrPVtake):int
 #protected Reproduce():void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>1080</y>
-      <w>190</w>
-      <h>80</h>
+      <x>420</x>
+      <y>1239</y>
+      <w>203</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>Carnivore
 --
+-IComportement&lt;Carnivore&gt; comportement;
+-prey :List&lt;Type&gt;
+-attackPower:int
 --
+#SetPrey(List&lt;Type&gt; liste):void
 +Update():void
 #Eat(IFood food):void
-#Reproduce():void</panel_attributes>
+#Reproduce():void
++CanAttack():bool
++Attack():void
+#Attack(LifeForm target):void
+#SeePrey():bool
++ClosestSeePrey():SimulationObject</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>1070</y>
-      <w>200</w>
-      <h>90</h>
+      <x>693</x>
+      <y>1253</y>
+      <w>203</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>Herbivore
 --
+IComportement&lt;Herbivore&gt; comportement;
 --
 +Update():void
 #Eat(IFood food):void
@@ -208,47 +262,48 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>970</y>
-      <w>180</w>
-      <h>130</h>
+      <x>518</x>
+      <y>1190</y>
+      <w>154</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>200.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>970</y>
-      <w>150</w>
-      <h>120</h>
+      <x>763</x>
+      <y>1190</y>
+      <w>21</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1400</x>
-      <y>290</y>
-      <w>130</w>
-      <h>70</h>
+      <x>1071</x>
+      <y>784</y>
+      <w>140</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 /IFood/
 --
-+isEaten():void
++IsEaten(int nbrPVTake):int
++IsEaten():int
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>610</x>
-      <y>290</y>
-      <w>230</w>
-      <h>80</h>
+      <x>630</x>
+      <y>182</y>
+      <w>161</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 /IObserver/
@@ -260,10 +315,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>460</y>
-      <w>280</w>
-      <h>140</h>
+      <x>511</x>
+      <y>301</y>
+      <w>224</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>ListSimulationObject
 --
@@ -273,16 +328,18 @@
 +notify(IObservable)
 +update():void
 -temporaireAdd(SimulationObject)
--removeTemp(SimulationObject)</panel_attributes>
+-removeTemp(SimulationObject)
++GetAll&lt;T&gt;():ListSimulationObject
++GetAll(List&lt;Type&gt; types):ListSimulationObject</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>580</x>
-      <y>360</y>
-      <w>160</w>
-      <h>120</h>
+      <x>609</x>
+      <y>231</y>
+      <w>112</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;100.0</additional_attributes>
@@ -290,10 +347,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>300</y>
-      <w>160</w>
-      <h>40</h>
+      <x>455</x>
+      <y>196</y>
+      <w>112</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>List&lt;SimulationObject&gt;
 --
@@ -304,32 +361,32 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>330</y>
-      <w>180</w>
-      <h>150</h>
+      <x>504</x>
+      <y>217</y>
+      <w>112</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1030</x>
-      <y>730</y>
-      <w>180</w>
-      <h>120</h>
+      <x>952</x>
+      <y>700</y>
+      <w>49</w>
+      <h>560</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;50.0;780.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1220</x>
-      <y>530</y>
-      <w>190</w>
-      <h>160</h>
+      <x>1071</x>
+      <y>546</y>
+      <w>133</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>Meat
 --
@@ -339,39 +396,39 @@ bg=blue</panel_attributes>
 --
 +Update():void
 #Disappear():void
-+IsEaten():void
++IsEaten(int nbrPVTake):int
 #Expiration():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1140</x>
-      <y>430</y>
-      <w>200</w>
-      <h>120</h>
+      <x>1008</x>
+      <y>385</y>
+      <w>147</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;180.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;190.0;230.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1310</x>
-      <y>350</y>
-      <w>150</w>
-      <h>200</h>
+      <x>1106</x>
+      <y>651</y>
+      <w>35</w>
+      <h>147</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;180.0</additional_attributes>
+    <additional_attributes>10.0;190.0;30.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1510</x>
-      <y>530</y>
-      <w>180</w>
-      <h>160</h>
+      <x>1288</x>
+      <y>546</y>
+      <w>126</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>OrganicWaste
 --
@@ -380,38 +437,38 @@ bg=blue</panel_attributes>
 --
 +Update()
 #Disppear()
-+IsEaten</panel_attributes>
++IsEaten(int nbrPVTake):int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1450</x>
-      <y>350</y>
-      <w>170</w>
-      <h>200</h>
+      <x>1169</x>
+      <y>651</y>
+      <w>168</w>
+      <h>147</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;180.0</additional_attributes>
+    <additional_attributes>10.0;190.0;220.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1230</x>
-      <y>430</y>
-      <w>390</w>
-      <h>120</h>
+      <x>1071</x>
+      <y>385</y>
+      <w>294</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;370.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;400.0;230.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>440</y>
-      <w>220</w>
-      <h>90</h>
+      <x>77</x>
+      <y>294</y>
+      <w>350</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>Simulation
 --
@@ -419,16 +476,17 @@ bg=blue</panel_attributes>
 --
 +Update():void
 +Draw(ICanvas, RectF):void
+-DrawObject(ICanvas canvas,RectF dirtyRect, SimulationObject drawable):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>260</y>
-      <w>230</w>
-      <h>70</h>
+      <x>161</x>
+      <y>196</y>
+      <w>161</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 /IDrawable/
@@ -441,29 +499,308 @@ bg=blue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>100</x>
-      <y>320</y>
-      <w>40</w>
-      <h>140</h>
+      <x>224</x>
+      <y>238</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>20.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1370</x>
-      <y>830</y>
-      <w>780</w>
-      <h>120</h>
+      <x>0</x>
+      <y>630</y>
+      <w>546</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>Zone
 --
 -rayon:double
+-objectInZone:ListSimulationObject
 --
-+getRayon():double
++GetRayon():double
++GetObjectInZone():ListSimulationObject
++Direction(double departureX, double departureY, double destinationX, double destinationY):double[]
 +Distance(double firstCoordinateX,double firstCoordinateY,double secondCoordinateX,double secondCoordinateY):double
-+Area(double x,double y):List&lt;double[]&gt;</panel_attributes>
++Area(double x,double y):List&lt;double[]&gt;
++IsInZone(double x, double y,double xZone, double yZone):bool
+#WhatIsZone(ListSimulation listeEnvironment,SimulationObject thisObject)
+#ClosestObject(ListSimulationObject list, SimulationObject thisObject):SimulationObject
++ClosestObject&lt;T&gt;(SimulationObject thisObject):SimulationObject
++ClosestObject(SimulationObject thisObject, List&lt;Type&gt; listeType):SimulationObject</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1344</x>
+      <y>756</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IComportement&lt;T&gt;
+--
++UpdateEtat(T thisObject):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1414</x>
+      <y>917</y>
+      <w>252</w>
+      <h>301</h>
+    </coordinates>
+    <panel_attributes>ComportementAnimalDefault&lt;T&gt;
+--
+{innerclass
+&lt;&lt;enumeration&gt;&gt;
+ComportementEtat
+--
+None
+Alimentation
+Reproduction
+innerclass}
+{innerclass
+&lt;&lt;enumeration&gt;&gt;
+ComportementSubEtat
+--
+None
+MoveTo
+Motionless
+innerclass}
+-etat:ComportementEtat
+-subEtat:ComportementSubEtat
+--
++UpdateEtat(T thisObject):void
+#ActionEtat(T thisObject):void
+#CondWantFood(T thisObject):bool
+#AvailableFoodMoveless(T thisObject):bool
+#AvailableFoodMove(T thisObject):bool
+#ActionAlimentationMoveless(T thisObject):void
+#ActionAlimentationMove(T thisObject):void
+#AvailableReproductionMoveless(T thisObject):bool
+#AvailableReproductionMove(T thisObject):bool
+#ActionReproductionMove(T thisObject):void
+#ActionReproductionMoveless(T thisObject):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1463</x>
+      <y>798</y>
+      <w>119</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;T -&gt; Animal&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>910</y>
+      <w>245</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ComportementPlantDefault
+--
+{innerclass
+&lt;&lt;enumeration&gt;&gt;
+ComportementEtat
+--
+None
+Alimentation
+innerclass}
+-etat:ComportementEtat
+--
++UpdateEtat(Plant thisObject):void
+#ActionEtat(Plant thisObject):void
+#ActionAlimentation(Plant thisObject):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1246</x>
+      <y>798</y>
+      <w>140</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;T -&gt; Plant&gt;</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1421</x>
+      <y>1302</y>
+      <w>252</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>ComportementCarnivoreDefault
+--
+{innerclass
+&lt;&lt;enumeration&gt;&gt;
+ComportementEtat
+--
+None
+Alimentation
+Reproduction
+Hunt
+innerclass}
+{innerclass
+&lt;&lt;enumeration&gt;&gt;
+ComportementSubEtat
+--
+None
+MoveTo
+Motionless
+innerclass}
+-etat:ComportementEtat
+-subEtat:ComportementSubEtat
+--
++UpdateEtat(Carnivore thisObject):void
+#ActionEtat(Carnivore thisObject):void
+#AvailableHuntMoveless(Carnivore thisObject):bool
+#AvailableHuntMove(Carnivore thisObject):bool
+#ActionHuntMoveless(Carnivore thisObject):void
+#ActionHuntMove(Carnivore thisObject):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1533</x>
+      <y>1211</y>
+      <w>91</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+&lt;T -&gt;Carnivore&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>749</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+m2=2</panel_attributes>
+    <additional_attributes>280.0;80.0;280.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>721</y>
+      <w>504</w>
+      <h>539</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=2</panel_attributes>
+    <additional_attributes>690.0;750.0;690.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>728</x>
+      <y>336</y>
+      <w>161</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..*
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>315</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1085</x>
+      <y>1043</y>
+      <w>98</w>
+      <h>217</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;290.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>819</x>
+      <y>1176</y>
+      <w>609</w>
+      <h>238</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;250.0;10.0;320.0;690.0;320.0;700.0;10.0;850.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>532</x>
+      <y>1400</y>
+      <w>903</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;1270.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>399</x>
+      <y>413</y>
+      <w>203</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;310.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1043</x>
+      <y>840</y>
+      <w>77</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;580.0</additional_attributes>
   </element>
 </diagram>

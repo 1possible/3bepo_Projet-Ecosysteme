@@ -25,9 +25,9 @@ namespace ecosysteme.Models
             this.consomationEnergie = consEne;
             diet = new List<Type>();
         }
-        public (int,int) getPv() { return (pv,pvMax); }
-        public (int, int) getEnergie() { return (energie, energieMax); }
-        protected List<Type> getDiet() { return diet; }
+        public (int,int) GetPv() { return (pv,pvMax); }
+        public (int, int) GetEnergie() { return (energie, energieMax); }
+        protected List<Type> GetDiet() { return diet; }
         protected void SetDiet(List<Type> liste)
         {
             diet = new List<Type>();
@@ -46,7 +46,7 @@ namespace ecosysteme.Models
         protected override void Update()
         {
             ConsumeEnergie();
-            isDeath();
+            IsDeath();
             
         }
         protected void ConsumeEnergie()
@@ -62,7 +62,7 @@ namespace ecosysteme.Models
             }
 
         }
-        protected void isDeath()
+        protected void IsDeath()
             //verifier si l'animal est pas mort(pv<=0) si il est mort appel la fonction Disappear()
         {
             if (this.pv <= 0) 
@@ -92,7 +92,7 @@ namespace ecosysteme.Models
 
         abstract protected void Reproduce();
 
-        public int losePv(int nbrPv)
+        public int LosePv(int nbrPv)
         {
             int pvLose = 0;
             if(nbrPv >= pv)
@@ -109,26 +109,22 @@ namespace ecosysteme.Models
             return pvLose;
 
         }
-
+        //retourn si oui ou non il y a un object d'un des type de list dans la zone
         protected bool ObjectInZone(Zone zone, List<Type> list)
         {
             bool haveFood = false;
-            if (zone.GetObjectInZone().getAll(list).Count() > 0)
+            if (zone.GetObjectInZone().GetAll(list).Count() > 0)
             {
                 haveFood = true;
             }
             return haveFood;
         }
-        //retourn si oui ou non il y a un object a manger dans sa spreadZone
-        protected bool foodInZone(Zone zoneNourriture)
-        {
-            return ObjectInZone(zoneNourriture, getDiet());
-        }
+
         public abstract bool CanEat();
         //fonction qui fait manger la plantes la nourriture la plus proche dans sa zone spreadZone
         protected void Eat(Zone zoneNourriture)
         {
-            SimulationObject cible = zoneNourriture.closestObject(this, this.getDiet());
+            SimulationObject cible = zoneNourriture.ClosestObject(this, this.GetDiet());
             if (cible != null)
             {
                 if (cible is IFood)

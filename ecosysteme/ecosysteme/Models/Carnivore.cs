@@ -56,17 +56,17 @@ namespace ecosysteme.Models
 
         protected override void Reproduce() 
         {
-            addToSimulation(new Carnivore(X, Y));
+            AddToSimulation(new Carnivore(X, Y));
         }
 
 
-        public bool canAttack()
+        public bool CanAttack()
         {
             return ObjectInZone(contactZone, prey);
         }
         protected void Attack(LifeForm target)
         {
-            target.losePv(attackPower);
+            target.LosePv(attackPower);
         }
         public bool SeePrey()
         {
@@ -74,11 +74,11 @@ namespace ecosysteme.Models
         }
         public void Attack()
         {
-            Attack((LifeForm)contactZone.closestObject(this, prey));
+            Attack((LifeForm)contactZone.ClosestObject(this, prey));
         }
-        public SimulationObject closestSeePrey()
+        public SimulationObject ClosestSeePrey()
         {
-            return visionZone.closestObject(this, prey);
+            return visionZone.ClosestObject(this, prey);
         }
     }
 }

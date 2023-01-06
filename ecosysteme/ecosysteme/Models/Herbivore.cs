@@ -32,7 +32,7 @@ namespace ecosysteme.Models
 
         protected override void Reproduce() 
         {
-            addToSimulation(new Herbivore(X, Y));
+            AddToSimulation(new Herbivore(X, Y));
         }
     }
 }

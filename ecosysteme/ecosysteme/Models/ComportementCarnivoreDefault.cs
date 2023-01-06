@@ -112,7 +112,7 @@ namespace ecosysteme.Models
         }
         protected bool AvailableHuntMoveless(Carnivore thisObject)
         {
-            return thisObject.canAttack();
+            return thisObject.CanAttack();
         }
         protected void ActionHuntMoveless(Carnivore thisObject)
         {
@@ -120,7 +120,7 @@ namespace ecosysteme.Models
         }
         protected void ActionHuntMove(Carnivore thisObject)
         {
-            SimulationObject target = thisObject.closestSeePrey();
+            SimulationObject target = thisObject.ClosestSeePrey();
             if (target != null)
             {
                 thisObject.MoveTo(target.X, target.Y);

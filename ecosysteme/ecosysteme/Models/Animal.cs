@@ -14,8 +14,8 @@ namespace ecosysteme.Models
         int timeForOrganiqueWaste;           // nombre de temps qu'il faut pour faire apparaitre de la matiere organique
         int currentTimeForOrganiqueWaste;    // le temps actuelle passe depuis l'apparition de matiere organique
         int nbrOganiqueWastePerTime;         // le nombre de matiere organique laisser par l'animal
-        public Zone contactZone;
-        public Zone visionZone;
+        protected Zone contactZone;
+        protected Zone visionZone;
         protected int sex;                             // 1 = femelle, 0 = Male
         protected bool pregnant;
         protected int pregnantTime;
@@ -44,11 +44,11 @@ namespace ecosysteme.Models
                 PregnancyIteration();
             }
         }
-        public override void Update(ListSimulationObject listEnvironement)
+        public override void Update(ListSimulationObject listEnvironment)
         {
-            contactZone.updateObjectInZone(listEnvironement, this);
-            visionZone.updateObjectInZone(listEnvironement, this);
-            base.Update(listEnvironement);
+            contactZone.updateObjectInZone(listEnvironment, this);
+            visionZone.updateObjectInZone(listEnvironment, this);
+            base.Update(listEnvironment);
         }
 
         protected void OrganicWastePeriodic() 
@@ -57,7 +57,7 @@ namespace ecosysteme.Models
             currentTimeForOrganiqueWaste++;
             if(timeForOrganiqueWaste <= currentTimeForOrganiqueWaste)
             {
-                addToSimulation(new OrganicWaste(X, Y, 1, nbrOganiqueWastePerTime));
+                AddToSimulation(new OrganicWaste(X, Y, 1, nbrOganiqueWastePerTime));
                 currentTimeForOrganiqueWaste = 0;
             }
         }
@@ -69,14 +69,14 @@ namespace ecosysteme.Models
             base.Disappear();
         }
 
-        public void Move(int speed)
+        private void Move(int speed)
         {
             Random rnd = new Random();
             X += rnd.Next(-speed,speed);
             Y += rnd.Next(-speed,speed);
         }
-
-        protected void MoveTo(int speed, double x, double y) 
+        public void Move() { Move(speed); }
+        private void MoveTo(int speed, double x, double y) 
         {
             double distance = Zone.Distance(x, y, this.X, this.Y);
             if (distance < speed ) 
@@ -101,10 +101,10 @@ namespace ecosysteme.Models
             }
             else { pregnantTime++; }
         }
-        protected ListSimulationObject FindMate(ListSimulationObject listEnvironement)
+        protected ListSimulationObject FindMate(ListSimulationObject listEnvironment)
         {
             ListSimulationObject potentialpartner = new ListSimulationObject();
-            foreach (SimulationObject elem in listEnvironement)
+            foreach (SimulationObject elem in listEnvironment)
             {
                 if (elem.GetType() == this.GetType())
                 {
@@ -119,8 +119,8 @@ namespace ecosysteme.Models
 
 
         public SimulationObject ClosestPartner(ListSimulationObject list)
-        {
-            double distance = visionZone.getRayon();
+        {//closestObject(this,new list<Type>{this.GetType()}); ne marche pas?
+            double distance = visionZone.GetRayon();
             SimulationObject closest = null;
             foreach (SimulationObject objectSim in list)
             {
@@ -139,9 +139,9 @@ namespace ecosysteme.Models
             return ClosestPartner(this.FindMate(this.visionZone.GetObjectInZone()));
         }
 
-        protected void Mate(ListSimulationObject listEnvironement)
+        protected void Mate(ListSimulationObject listEnvironment)
         {
-            foreach (SimulationObject elem in listEnvironement)
+            foreach (SimulationObject elem in listEnvironment)
             {
                 if (elem.GetType() == this.GetType())
                 {
@@ -172,7 +172,7 @@ namespace ecosysteme.Models
         //---fonction Alimentation---
         public override bool CanEat()
         {
-            return foodInZone(contactZone);
+            return ObjectInZone(contactZone,this.GetDiet());
         }
         public override void Eat()
         {
@@ -180,11 +180,11 @@ namespace ecosysteme.Models
         }
         public bool SeeFood()
         {
-            return foodInZone(visionZone);
+            return ObjectInZone(visionZone,this.GetDiet());
         }
         public SimulationObject closestFood()
         {
-            return visionZone.closestObject(this, getDiet());
+            return visionZone.ClosestObject(this, GetDiet());
         }
     }
 }

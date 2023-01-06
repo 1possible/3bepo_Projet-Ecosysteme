@@ -17,13 +17,13 @@ namespace ecosysteme.Models
         {
             this.rayon = rayon;
         }
-        public double getRayon() { return this.rayon; }
+        public double GetRayon() { return this.rayon; }
 
         public ListSimulationObject GetObjectInZone() { return this.objectInZone; }
 
         public void updateObjectInZone(ListSimulationObject listEnvironement, SimulationObject thisObject)
         {
-            objectInZone = whatIsZone(listEnvironement, thisObject);
+            objectInZone = WhatIsZone(listEnvironement, thisObject);
         }
 
 
@@ -95,7 +95,7 @@ namespace ecosysteme.Models
         }
 
         //renvoie true si l'object est dans sa zone sinon renvoie false
-        public bool isInZone(double x, double y, double xZone, double yZone)
+        public bool IsInZone(double x, double y, double xZone, double yZone)
         {
             if (Distance(x, y, xZone, yZone) <= this.rayon)
             {
@@ -107,16 +107,16 @@ namespace ecosysteme.Models
             }
         }
         //renvoie tout les object de la liste qui se trouve dans la zone
-        protected ListSimulationObject whatIsZone(ListSimulationObject listeEnvironement, SimulationObject thisObject)
+        protected ListSimulationObject WhatIsZone(ListSimulationObject listeEnvironment, SimulationObject thisObject)
         {
             ListSimulationObject listReturn = new ListSimulationObject();
-            foreach (SimulationObject objectSim in listeEnvironement)
+            foreach (SimulationObject objectSim in listeEnvironment)
             {
                 if (objectSim != thisObject)
                 {
                     if (!objectSim.GetDisappearValue())
                     {
-                        if (isInZone(objectSim.X, objectSim.Y, thisObject.X, thisObject.Y))
+                        if (IsInZone(objectSim.X, objectSim.Y, thisObject.X, thisObject.Y))
                         {
                             listReturn.Add(objectSim);
                         }
@@ -126,7 +126,7 @@ namespace ecosysteme.Models
             return listReturn;
         }
         //renvoie l'object le plus proche dans le rayon de la zone si il y pas d'object il renvoie null
-        protected SimulationObject closestObject(ListSimulationObject list, SimulationObject thisObject)
+        protected SimulationObject ClosestObject(ListSimulationObject list, SimulationObject thisObject)
         {
             double distance = this.rayon;
             SimulationObject closest = null;
@@ -141,13 +141,13 @@ namespace ecosysteme.Models
             }
             return closest;
         }
-        internal SimulationObject closestObject<T>(SimulationObject thisObject)
+        internal SimulationObject ClosestObject<T>(SimulationObject thisObject)
         {
-            return closestObject(objectInZone.getAll<T>(), thisObject);
+            return ClosestObject(objectInZone.GetAll<T>(), thisObject);
         }
-        internal SimulationObject closestObject(SimulationObject thisObject, List<Type> listeType)
+        internal SimulationObject ClosestObject(SimulationObject thisObject, List<Type> listeType)
         {
-            return closestObject(objectInZone.getAll(listeType), thisObject);
+            return ClosestObject(objectInZone.GetAll(listeType), thisObject);
         }
     }
 }

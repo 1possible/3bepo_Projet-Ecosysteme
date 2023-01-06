@@ -58,7 +58,7 @@ namespace ecosysteme.Models
             if (reproTime <= 0)
             {
                 //fait apparaitre une plante à des coordonnées aléatoires dans la zone.
-                addToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1],4));
+                AddToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1],4));
                 reproTime = 15;
             }
         }
@@ -67,7 +67,7 @@ namespace ecosysteme.Models
         //retourn si oui ou non il y a un object a manger dans sa spreadZone
         public override bool CanEat()
         {
-            return foodInZone(spreadZone);
+            return ObjectInZone(spreadZone,this.GetDiet());
         }
         //fonction qui fait manger la plantes la nourriture la plus proche dans sa zone spreadZone
         public override void Eat()
@@ -77,7 +77,7 @@ namespace ecosysteme.Models
         //---interface IFood---
         public int IsEaten(int nbrPVTake)
         {
-            int energieGive = losePv(nbrPVTake) * energiePerPv;
+            int energieGive = LosePv(nbrPVTake) * energiePerPv;
             return energieGive;
         }
     }

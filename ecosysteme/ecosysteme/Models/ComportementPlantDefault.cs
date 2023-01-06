@@ -18,7 +18,7 @@ namespace ecosysteme.Models
         public ComportementPlantDefault(Plant thisObject) { }
         public void UpdateEtat(Plant thisObject)
         {
-            (int,int) energie = thisObject.getEnergie();
+            (int,int) energie = thisObject.GetEnergie();
             if ((double)energie.Item1 / energie.Item2 < 0.5 && thisObject.CanEat())
             {
                 etat = etatComportementBase.Alimentation;
