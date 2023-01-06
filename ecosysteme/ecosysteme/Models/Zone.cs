@@ -149,6 +149,5 @@ namespace ecosysteme.Models
         {
             return closestObject(objectInZone.getAll(listeType), thisObject);
         }
-
     }
 }

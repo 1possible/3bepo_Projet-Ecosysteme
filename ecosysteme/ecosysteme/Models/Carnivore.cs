@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -12,6 +13,7 @@ namespace ecosysteme.Models
         IComportement<Carnivore> comportement;
         private List<Type> prey; //liste des proie que le carnivore va chasser
         int attackPower;
+
         public Carnivore(double x, double y) : base(Colors.Red, x, y, 30, 20, 1, 5)
         {
             contactZone = new Zone(3);
@@ -24,6 +26,7 @@ namespace ecosysteme.Models
             {
                 typeof(Herbivore)
             });
+
             speed = 5;
             attackPower = 5;
             comportement = new ComportementCarnivoreDefault();
@@ -43,6 +46,8 @@ namespace ecosysteme.Models
                 }
             }
         }
+
+
         protected override void Update()
         {
             base.Update();
@@ -54,42 +59,7 @@ namespace ecosysteme.Models
             addToSimulation(new Carnivore(X, Y));
         }
 
-        protected override void FindMate(ListSimulationObject listEnvironement)
-        {
-            List<double[]> visionArea = visionZone.Area(X, Y);
-            double distance = 10000;
-            double[] coordinate = new double[] {0,0};
-            foreach (Carnivore carni in listEnvironement.getAll<Carnivore>())
-            {
-                foreach (double[] coord in visionArea)
-                {
-                    if (carni.GetCoord() == coord)
-                    {
-                        if (Zone.Distance(X, Y, coord[0], coord[1]) < distance)
-                        {
-                            distance = Zone.Distance(X, Y, coord[0], coord[1]);
-                            coordinate[0] = coord[0];
-                            coordinate[1] = coord[1];
-                        }
-                    }
-                }
-            }
-            MoveTo(5, coordinate[0], coordinate[1]);
-        }
-        protected override void Mate(ListSimulationObject listEnvironement)
-        {
-            List<double[]> contactArea = contactZone.Area(X, Y);
-            foreach (Carnivore carni in listEnvironement.getAll<Carnivore>())
-            {
-                foreach (double[] coord in contactArea)
-                {
-                    if (carni.GetCoord() == coord && this.pregnant == false && this.sex != carni.sex)
-                    {
-                        this.GetPregnant();
-                    }
-                }
-            }
-        }
+
         public bool canAttack()
         {
             return ObjectInZone(contactZone, prey);

@@ -14,8 +14,8 @@ namespace ecosysteme.Models
         int timeForOrganiqueWaste;           // nombre de temps qu'il faut pour faire apparaitre de la matiere organique
         int currentTimeForOrganiqueWaste;    // le temps actuelle passe depuis l'apparition de matiere organique
         int nbrOganiqueWastePerTime;         // le nombre de matiere organique laisser par l'animal
-        protected Zone contactZone;
-        protected Zone visionZone;
+        public Zone contactZone;
+        public Zone visionZone;
         protected int sex;                             // 1 = femelle, 0 = Male
         protected bool pregnant;
         protected int pregnantTime;
@@ -33,7 +33,7 @@ namespace ecosysteme.Models
             pregnantTime = 5;
             gestationTime = 0;
         }
-        public Animal(Color color, double x, double y, int pv, int energie, int consEne, int nbrViande) : this(color, x, y, pv, energie, consEne, nbrViande, new Random().Next(2))
+        public Animal(Color color, double x, double y, int pv, int energie, int consEne, int nbrViande) : this(color, x, y, pv, energie, consEne, nbrViande, new Random().Next(0,2))
         {}
         public int GetSpeed() { return speed; }
         protected override void Update()
@@ -78,7 +78,7 @@ namespace ecosysteme.Models
 
         protected void MoveTo(int speed, double x, double y) 
         {
-            double distance = Zone.Distance(x, y, X, Y);
+            double distance = Zone.Distance(x, y, this.X, this.Y);
             if (distance < speed ) 
             {
                 X = x;
@@ -101,10 +101,50 @@ namespace ecosysteme.Models
             }
             else { pregnantTime++; }
         }
-        protected abstract void FindMate(ListSimulationObject listEnvironement);
-        public void FindMate() { FindMate(visionZone.GetObjectInZone()); }
-        protected abstract void Mate(ListSimulationObject listEnvironement);
+        protected ListSimulationObject FindMate(ListSimulationObject listEnvironement)
+        {
+            ListSimulationObject potentialpartner = new ListSimulationObject();
+            foreach (SimulationObject elem in listEnvironement)
+            {
+                if (elem.GetType() == this.GetType())
+                {
+                    if (((Animal)elem).pregnant == false && ((Animal)elem).sex == 1 && this.sex == 0 )
+                    {
+                        potentialpartner.Add(elem);
+                    }
+                }
+            }
+            return potentialpartner;
+        }
+        protected void Mate(ListSimulationObject listEnvironement)
+        {
+            if (this.pregnant == false )
+            {
+                this.GetPregnant();
+            }
+        }
         public void Mate() { Mate(contactZone.GetObjectInZone()); }
+
+        public SimulationObject ClosestPartner(ListSimulationObject list)
+        {
+            double distance = visionZone.getRayon();
+            SimulationObject closest = null;
+            foreach (SimulationObject objectSim in list)
+            {
+                double distanceTemp = Zone.Distance(objectSim.X, objectSim.Y, this.X, this.Y);
+                if (distanceTemp <= distance)
+                {
+                    closest = objectSim;
+                    distance = distanceTemp;
+                }
+            }
+            return closest;
+        }
+
+        public SimulationObject ClosestP()
+        {
+            return ClosestPartner(this.FindMate(this.visionZone.GetObjectInZone()));
+        }
 
         protected void GetPregnant()
         {

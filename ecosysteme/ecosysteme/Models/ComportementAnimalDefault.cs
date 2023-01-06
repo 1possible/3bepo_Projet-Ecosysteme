@@ -110,7 +110,11 @@ namespace ecosysteme.Models
 
         protected virtual void ActionReproductionMove(T thisObject)
         {
-            thisObject.FindMate();
+            SimulationObject target = thisObject.ClosestP();
+            if (target != null)
+            {
+                thisObject.MoveTo(target.X, target.Y);
+            }
         }
         protected virtual void ActionReproductionMoveless(T thisObject)
         {
