@@ -13,12 +13,12 @@ namespace ecosysteme.Models
         public Herbivore(double x, double y) : base(Colors.Black, x, y, 5, 20, 1,5)
         {
             contactZone = new Zone(2);
-            visionZone = new Zone(30);
+            visionZone = new Zone(100);
             SetDiet(new List<Type>
             {
                 typeof(Plant)
             });
-            speed = 3;
+            speed = 6;
             comportement = new ComportementAnimalDefault<Herbivore>();
         }
 

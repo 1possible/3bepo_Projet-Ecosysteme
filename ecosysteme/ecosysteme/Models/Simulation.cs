@@ -15,7 +15,7 @@ namespace ecosysteme.Models
             int i = 0;
             Random rnd = new Random();
             objects = new ListSimulationObject();
-            while (i<20)
+            while (i<50)
             {
                 objects.Add(new Herbivore(rnd.Next(1, 1000), rnd.Next(1, 800)));
                 objects.Add(new Carnivore(rnd.Next(1, 1000), rnd.Next(1, 800)));

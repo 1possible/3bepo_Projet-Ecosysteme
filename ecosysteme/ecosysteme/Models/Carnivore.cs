@@ -17,7 +17,7 @@ namespace ecosysteme.Models
         public Carnivore(double x, double y) : base(Colors.Red, x, y, 30, 20, 1, 5)
         {
             contactZone = new Zone(3);
-            visionZone = new Zone(40);
+            visionZone = new Zone(100);
             SetDiet(new List<Type>
             {
                 typeof(Meat)
@@ -27,7 +27,7 @@ namespace ecosysteme.Models
                 typeof(Herbivore)
             });
 
-            speed = 5;
+            speed = 10;
             attackPower = 5;
             comportement = new ComportementCarnivoreDefault();
         }

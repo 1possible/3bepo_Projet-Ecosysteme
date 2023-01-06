@@ -11,7 +11,7 @@ namespace ecosysteme.Models
         int pv;                             
         int energieParPv;                   
 
-        public OrganicWaste(double x, double y, int energie, int nbrViande) : base(Colors.Brown, x, y)
+        public OrganicWaste(double x, double y, int energie, int nbrViande) : base(Colors.Chocolate, x, y)
         {
             this.pv = nbrViande;
             this.energieParPv = energie;

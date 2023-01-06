@@ -30,8 +30,8 @@ namespace ecosysteme.Models
             nbrOganiqueWastePerTime = 2;
             this.sex = sex;
             pregnant = false;
-            pregnantTime = 5;
-            gestationTime = 0;
+            pregnantTime = 0;
+            gestationTime = 5;
         }
         public Animal(Color color, double x, double y, int pv, int energie, int consEne, int nbrViande) : this(color, x, y, pv, energie, consEne, nbrViande, new Random().Next(0,2))
         {}
@@ -116,14 +116,7 @@ namespace ecosysteme.Models
             }
             return potentialpartner;
         }
-        protected void Mate(ListSimulationObject listEnvironement)
-        {
-            if (this.pregnant == false )
-            {
-                this.GetPregnant();
-            }
-        }
-        public void Mate() { Mate(contactZone.GetObjectInZone()); }
+
 
         public SimulationObject ClosestPartner(ListSimulationObject list)
         {
@@ -146,6 +139,19 @@ namespace ecosysteme.Models
             return ClosestPartner(this.FindMate(this.visionZone.GetObjectInZone()));
         }
 
+        protected void Mate(ListSimulationObject listEnvironement)
+        {
+            foreach (SimulationObject elem in listEnvironement)
+            {
+                if (elem.GetType() == this.GetType())
+                {
+                    if (((Animal)elem).pregnant == false && ((Animal)elem).sex == 1 && this.sex == 0)
+                    {
+                        ((Animal)elem).GetPregnant();
+                    }
+                }
+            }
+        }
         protected void GetPregnant()
         {
             if (this.sex == 1)
@@ -153,6 +159,8 @@ namespace ecosysteme.Models
                 this.pregnant = true;
             }
         }
+        public void Mate() { Mate(contactZone.GetObjectInZone()); }
+
         public bool CanMate()
         {
             return ObjectInZone(contactZone, new List<Type> { this.GetType() });
