@@ -33,7 +33,7 @@ namespace ecosysteme.Models
     }
 
         public bool GetDisappearValue() { return disappearValue; }//retourne la valeur Disappearvalue
-        private void SetAppearObj(SimulationObject value) { appearObj = value; }//change la valeur SetAppearObj
+        protected void SetAppearObj(SimulationObject value) { appearObj = value; }//change la valeur SetAppearObj
 
         protected void AddToSimulation(SimulationObject value)
             //rajoute dans les observer (la liste simulation) un object

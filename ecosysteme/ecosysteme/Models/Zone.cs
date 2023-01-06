@@ -141,11 +141,11 @@ namespace ecosysteme.Models
             }
             return closest;
         }
-        internal SimulationObject ClosestObject<T>(SimulationObject thisObject)
+        public SimulationObject ClosestObject<T>(SimulationObject thisObject)
         {
             return ClosestObject(objectInZone.GetAll<T>(), thisObject);
         }
-        internal SimulationObject ClosestObject(SimulationObject thisObject, List<Type> listeType)
+        public SimulationObject ClosestObject(SimulationObject thisObject, List<Type> listeType)
         {
             return ClosestObject(objectInZone.GetAll(listeType), thisObject);
         }
