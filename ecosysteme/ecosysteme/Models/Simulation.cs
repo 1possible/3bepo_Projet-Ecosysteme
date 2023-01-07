@@ -19,11 +19,11 @@ namespace ecosysteme.Models
             {
                 objects.Add(new Rabbit(rnd.Next(1, 1000), rnd.Next(1, 800)));
                 objects.Add(new Lion(rnd.Next(1, 1000), rnd.Next(1, 800)));
-                objects.Add(new Plant(rnd.Next(1, 1000), rnd.Next(1, 800),4));
+                objects.Add(new Grass(rnd.Next(1, 1000), rnd.Next(1, 800)));
                 i++;
             }
             objects.Add(new Rabbit(200, 210));
-            objects.Add(new Plant(200, 200,4));
+            objects.Add(new Grass(200, 200));
             objects.Add(new Rabbit(210, 200));
             objects.Add(new OrganicWaste(200,200,100,5));
             objects.Add(new Lion(210,210));

@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ecosysteme.Models
 {
-    public class Plant : LifeForm, IFood
+    public abstract class Plant : LifeForm, IFood
     {
         Zone spreadZone = new Zone(50);
         Zone rootZone = new Zone(20);
         int reproTime;
         IComportement<Plant> comportement;
         int energiePerPv;
-        public Plant(double x, double y,int energiePerPv) : base(Colors.Green, x, y, 10, 5, 1)
+        public Plant(double x, double y,int pv,int energie,int consEne,int energiePerPv) : base(Colors.Green, x, y, pv, energie, consEne)
         {
             reproTime = 15;
             List<Type> diet = new List<Type>
@@ -46,7 +47,7 @@ namespace ecosysteme.Models
             base.Disappear();
         }
 
-        protected override void Reproduce() 
+        protected void SpawnInSpreadZone<T>() where T : SimulationObject
         {
             reproTime--;
 
@@ -58,7 +59,10 @@ namespace ecosysteme.Models
             if (reproTime <= 0)
             {
                 //fait apparaitre une plante à des coordonnées aléatoires dans la zone.
-                AddToSimulation(new Plant(spreadArea[randomCoord][0], spreadArea[randomCoord][1],4));
+                Type classType = typeof(T);
+                ConstructorInfo classConstructor = classType.GetConstructor(new Type[] { typeof(double),typeof(double) });
+                T classInstance = (T)classConstructor.Invoke(new object[] { spreadArea[randomCoord][0], spreadArea[randomCoord][1] });
+                AddToSimulation(classInstance);
                 reproTime = 15;
             }
         }
