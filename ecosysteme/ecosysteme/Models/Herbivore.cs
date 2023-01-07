@@ -7,10 +7,10 @@ using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace ecosysteme.Models
 {
-    internal class Herbivore : Animal
+    internal abstract class Herbivore : Animal
     {
         IComportement<Herbivore> comportement;
-        public Herbivore(double x, double y) : base(Colors.Black, x, y, 5, 20, 1,5)
+        public Herbivore(double x, double y,int pv,int energie,int consEne,int nbrViande,int speed) : base(Colors.Black, x, y, pv,energie,consEne,nbrViande)
         {
             contactZone = new Zone(2);
             visionZone = new Zone(100);
@@ -18,7 +18,7 @@ namespace ecosysteme.Models
             {
                 typeof(Plant)
             });
-            speed = 6;
+            SetSpeed(speed);
             comportement = new ComportementAnimalDefault<Herbivore>();
         }
 
@@ -30,9 +30,9 @@ namespace ecosysteme.Models
         }
 
 
-        protected override void Reproduce() 
+        /*protected override void Reproduce() 
         {
             AddToSimulation(new Herbivore(X, Y));
-        }
+        }*/
     }
 }
