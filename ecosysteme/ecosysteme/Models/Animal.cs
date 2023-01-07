@@ -174,11 +174,11 @@ namespace ecosysteme.Models
 
         public bool CanMate()
         {
-            return ObjectInZone(contactZone, new List<Type> { this.GetType() });
+            return ObjectInZone(contactZone, new List<Type> { this.GetType() })&& !this.pregnant;
         }
         public bool CanFindMate()
         {
-            return ObjectInZone(visionZone, new List<Type> { this.GetType() });
+            return ObjectInZone(visionZone, new List<Type> { this.GetType() }) && !this.pregnant;
         }
         //---fonction Alimentation---
         public override bool CanEat()

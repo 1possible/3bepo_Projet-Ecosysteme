@@ -91,7 +91,7 @@ namespace ecosysteme.Models
                 bool isTypes = false;
                 foreach (Type type in types)
                 {
-                    if (obj.GetType().IsAssignableFrom(type))
+                    if (type.IsAssignableFrom(obj.GetType()))
                     {
                         isTypes = true;
                     }

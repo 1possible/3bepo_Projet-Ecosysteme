@@ -76,7 +76,7 @@ namespace ecosysteme.Models
             bool foodenable = false;
             foreach (Type t in diet)
             {
-                if (consomable.GetType().IsAssignableFrom(t))
+                if (t.IsAssignableFrom(consomable.GetType()))
                 {
                     foodenable = true;
                 }

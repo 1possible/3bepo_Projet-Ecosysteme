@@ -8,7 +8,7 @@ namespace ecosysteme.Models
 {
     internal class Grass:Plant
     {
-        public Grass(double x,double y) : base(x, y, 5, 5, 1, 4){}
+        public Grass(double x,double y) : base(x, y, 5, 15, 1, 4){}
 
         protected override void Reproduce()
         {
