@@ -36,6 +36,17 @@ namespace ecosysteme.Models
         public Animal(Color color, double x, double y, int pv, int energie, int consEne, int nbrViande) : this(color, x, y, pv, energie, consEne, nbrViande, new Random().Next(0,2))
         {}
         public int GetSpeed() { return speed; }
+        protected void SetSpeed(int speed) {
+            if(speed > 0)
+            {
+                this.speed = speed;
+            }
+            else
+            {
+                this.speed = 1;
+                Console.WriteLine("valeur " + speed + " est invalide: speed doit etre positif.");
+            }
+        }
         protected override void Update()
         {
             base.Update();

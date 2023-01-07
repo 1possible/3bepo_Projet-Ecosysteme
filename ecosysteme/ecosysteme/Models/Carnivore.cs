@@ -8,16 +8,16 @@ using System.Xml.Linq;
 
 namespace ecosysteme.Models
 {
-    internal class Carnivore : Animal
+    abstract class Carnivore : Animal
     {
         IComportement<Carnivore> comportement;
         private List<Type> prey; //liste des proie que le carnivore va chasser
         int attackPower;
 
-        public Carnivore(double x, double y) : base(Colors.Red, x, y, 30, 20, 1, 5)
+        public Carnivore(double x, double y,int pv,int energie,int consEne,int nbrViande,int rayonContactZone,int rayonVisionZone,int speed,int attackPower): base(Colors.Red, x, y, pv, energie, consEne, nbrViande)
         {
-            contactZone = new Zone(3);
-            visionZone = new Zone(100);
+            contactZone = new Zone(rayonContactZone);
+            visionZone = new Zone(rayonVisionZone);
             SetDiet(new List<Type>
             {
                 typeof(Meat)
@@ -26,9 +26,8 @@ namespace ecosysteme.Models
             {
                 typeof(Herbivore)
             });
-
-            speed = 10;
-            attackPower = 5;
+            this.SetSpeed(speed);
+            this.attackPower = attackPower;
             comportement = new ComportementCarnivoreDefault();
         }
         protected void SetPrey(List<Type> liste)
@@ -54,10 +53,10 @@ namespace ecosysteme.Models
             comportement.UpdateEtat(this);
         }
 
-        protected override void Reproduce() 
+        /*protected override void Reproduce() 
         {
             AddToSimulation(new Carnivore(X, Y));
-        }
+        }*/
 
 
         public bool CanAttack()
