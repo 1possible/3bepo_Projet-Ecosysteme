@@ -14,7 +14,6 @@
 énoncé du principe:
 >Tout Type devrait pouvoir être remplacé par un sous-type, sans que le programme devienne sémantiquement incorrect.
 
-Par exemple : Si q(x) est une propriété démontrable pour tout objet x de type T, Alors q(y) doit être vraie pour tout objet y de type S où S est un sous-type de T.
 Dans notre code on défini beaucoup d'argument pour les constructeurs de sous-classe, de cette manière on maintient le code flexible et sémantiquement correcte.
 
 ### Principe Ouvert/Fermé
