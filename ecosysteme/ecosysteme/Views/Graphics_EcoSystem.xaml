@@ -15,8 +15,8 @@
             <GraphicsView 
                 x:Name="graphics"
                 Drawable="{StaticResource simulation}"
-                HeightRequest="300"
-                WidthRequest="400" />
+                HeightRequest="800"
+                WidthRequest="1000" />
 
         </VerticalStackLayout>
     </ScrollView>

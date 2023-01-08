@@ -19,7 +19,7 @@ namespace ecosysteme.Models
             this.peremptionTime = perTime;
         }
 
-        public override void Update()
+        protected override void Update()
         {
             Expiration();
         }
@@ -30,9 +30,21 @@ namespace ecosysteme.Models
             base.Disappear();
         }
 
-        void IFood.IsEaten() 
+        int IFood.IsEaten(int nbrPVTake) 
         {
-            Disappear();
+            int energieGive = 0;
+            if(this.pv - nbrPVTake >= 0)
+            {
+                energieGive = nbrPVTake * energieParPv;
+                this.pv = pv - nbrPVTake;
+            }
+            else
+            {
+                energieGive = pv * energieParPv;
+                pv = 0;
+            }
+            if(this.pv== 0) { Disappear(); }
+            return energieGive;
         }
 
         protected void Expiration() 

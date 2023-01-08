@@ -11,22 +11,31 @@ namespace ecosysteme.Models
         int pv;                             
         int energieParPv;                   
 
-        public OrganicWaste(double x, double y, int energie, int nbrViande) : base(Colors.Brown, x, y)
+        public OrganicWaste(double x, double y, int energie, int nbrViande) : base(Colors.Chocolate, x, y)
         {
             this.pv = nbrViande;
             this.energieParPv = energie;
         }
 
-        public override void Update()
-        {
-        }
-        protected override void Disappear()
+        protected override void Update()
         {
         }
 
-        void IFood.IsEaten()
+        int IFood.IsEaten(int nbrPVTake)
         {
-
+            int energieGive = 0;
+            if (this.pv - nbrPVTake >= 0)
+            {
+                energieGive = nbrPVTake * energieParPv;
+                this.pv = pv - nbrPVTake;
+            }
+            else
+            {
+                energieGive = pv * energieParPv;
+                pv = 0;
+            }
+            if (this.pv == 0) { Disappear(); }
+            return energieGive;
         }
     }
 }
